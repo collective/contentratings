@@ -1,0 +1,41 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           i18n_domain="contentratings">
+
+  <include file="permissions.zcml" />
+  <include package="zope.app.annotation" />
+  <!-- Rating -->
+
+  <adapter
+      for=".interfaces.IEditorRatable"
+      provides=".interfaces.IEditorialRating"
+      factory=".rating.EditorialRating"
+      trusted="true"
+      />
+
+  <content class=".rating.EditorialRating">
+    <!-- set_attributes isn't working in Five -->
+    <require
+        permission="contentratings.EditorRate"
+        interface=".interfaces.IEditorialRating"
+        />
+  </content>
+
+  <adapter
+      for=".interfaces.IUserRatable"
+      provides=".interfaces.IUserRating"
+      factory=".rating.UserRating"
+      trusted="true"
+      />
+
+  <content class=".rating.UserRating">
+    <!-- set_attributes isn't working in Five -->
+    <require
+        permission="contentratings.UserRate"
+        interface=".interfaces.IUserRating"
+        />
+  </content>
+
+  <include package=".browser" />
+
+</configure>

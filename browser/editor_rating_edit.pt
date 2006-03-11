@@ -1,0 +1,25 @@
+    <form id="editorial-rating-edit"
+          method="POST"
+          action="rating_action"
+          name="single_rating_form"
+          tal:define="rating view/rating;
+                      stars python:range(1,6);
+                      star_icon string:/++resource++star_icon.gif;
+                      blank_star_icon string:/++resource++blank_star_icon.gif;"
+          tal:attributes="action string:@@editorial_rating_set/rate">
+        <span i18n:translate="">Click to change the editor rating:</span>
+        <span class="discreet"
+              tal:condition="python:rating is None"
+              i18n:translate="">(not rated)</span>
+        <input type="image"
+               name="rating"
+               value="n"
+               style="border: 0;"
+               tal:repeat="star stars"
+               tal:attributes="src python:(rating &lt; star) and blank_star_icon or star_icon;
+                               value star" />
+        <input type="hidden"
+               name="orig_url"
+               value="current-url"
+               tal:attributes="value request/ACTUAL_URL|request/getURL|nothing" />
+    </form>
