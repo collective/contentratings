@@ -30,6 +30,10 @@ class EditorialRatingView(BrowserView):
         return self.adapted.rating
     rating = property(_getRating)
 
+    def _getScale(self):
+        return self.adapted.scale
+    scale = property(_getScale)
+
 
 class EditorialRatingSetView(EditorialRatingView):
     """A view for setting the rating information"""
@@ -62,6 +66,10 @@ class UserRatingView(BrowserView):
     def _number(self):
         return self.adapted.numberOfRatings
     numberOfRatings = property(_number)
+
+    def _getScale(self):
+        return self.adapted.scale
+    scale = property(_getScale)
 
 
 class UserRatingSetView(BrowserView):
@@ -145,6 +153,10 @@ class UserRatingSetView(BrowserView):
 
     def userRating(self):
         return self.adapted.userRating(self._getUser())
+
+    def _getScale(self):
+        return self.adapted.scale
+    scale = property(_getScale)
 
 
 class MacroProvider(BrowserView):

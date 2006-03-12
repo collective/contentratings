@@ -1,6 +1,6 @@
     <div id="editorial-rating-display"
          tal:define="rating view/rating;
-                     stars python:range(1,6);
+                     stars python:range(1,view.scale+1);
                      star_icon string:/++resource++star_icon.gif;
                      blank_star_icon string:/++resource++blank_star_icon.gif;"
          tal:condition="not:nocall:edit_view/rate|nothing">

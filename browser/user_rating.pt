@@ -1,6 +1,6 @@
     <div id="user-rating-display"
          tal:define="avg view/averageRating;
-                     stars python:range(1,6);
+                     stars python:range(1,view.scale+1);
                      star_icon string:/++resource++star_icon.gif;
                      blank_star_icon string:/++resource++blank_star_icon.gif;">
         <span i18n:translate="">Average Rating:</span>

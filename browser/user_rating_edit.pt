@@ -3,7 +3,7 @@
           action="rating_action"
           name="user_rating_form"
           tal:define="rating view/userRating;
-                      stars python:range(1,6);
+                      stars python:range(1,view.scale+1);
                       star_icon string:/++resource++star_icon.gif;
                       blank_star_icon string:/++resource++blank_star_icon.gif;"
           tal:condition="view/canRate"

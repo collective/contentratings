@@ -98,6 +98,66 @@ To make a virtual hosted CMF or Plone portal traversable use the following:::
 As above, ensure that you have the Fiveconfiguration namespace available.
 
 
+Working With the Plone Catalog
+==============================
+
+There are some special methods in the plone_extras sub-package to make it easy
+to store ratings in plone's portal_catalog.  To enable this feature, just add
+the following to your product's ``__init__.py``::
+
+ # Add IndexableObjectWrappers for ratings:
+ from contentratings.plone_extras import catalog_stuff
+
+Which registers the adapters as indexable attributes, then add the indexes
+and/or metadata to the catalog using either GenericSetup, or adding the
+following to your ``Extensions/Install.py`` ``install()`` method::
+
+ from contentratings.plone_extras.catalog_stuff import addRatingIndexesToCatalog
+ from contentratings.plone_extras.catalog_stuff import addRatingMetadataToCatalog
+ addRatingIndexesToCatalog(self)
+ addRatingMetadataToCatalog(self)
+
+This will add an ``user_rating_tuple`` and ``editorial_rating`` columns and
+indexes to your portal_catalog.  The ``user_rating_tuple`` stores a tuple
+containing the average rating and the number of ratings, for convenient
+sorting and presentation.
+
+
+Multiple Ratings on a Single Object
+===================================
+
+If you want to allow multiple types of ratings (so people can rate e.g. value,
+quality, clarity) on a single object you can provide multiple adapters for the
+object.  First you need a custom adapter class::
+
+ from contentratings.rating import UserRating
+
+ class MyCustomRating(UserRating):
+     key='myproduct.customrating'
+     scale=10
+
+Key is required and must be unique as it's the key for the annotation in which
+the rating will be stored.  Scale is optional and merely provides a ui hint
+for the possible range of values.
+
+You must then register this adapter for your class via zcml, because it is
+providing the same interface as an existing adapter, you need to make it a
+named adapter:
+
+  <adapter
+      for=".interfaces.IUserRatable"
+      provides=".interfaces.IUserRating"
+      factory="MyProduct.MyCustomRating"
+      trusted="true"
+      name="my_rating"
+      />
+
+For the moment you will need to provide a custom view for this rating which
+looks it up by name, using ``getAdapter(obj, IUserRating, "my_rating")``.
+Eventually a view may be provided by default which iterates through all
+IUserRating adapters and presents them.
+
+
 Using The Adapters
 ==================
 

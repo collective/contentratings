@@ -11,27 +11,35 @@ USERKEY = "contentrating.userrating"
 class EditorialRating(object):
     implements(IEditorialRating)
 
+    annotation_key = SINGLEKEY
+    scale = 5
+
     def __init__(self, context):
+        key = self.annotation_key
         self.context = context
         self.annotations = IAnnotations(context)
-        rating = self.annotations.get(SINGLEKEY, None)
+        rating = self.annotations.get(key, None)
         if rating is None:
-            rating = self.annotations[SINGLEKEY] = None
+            rating = self.annotations[key] = None
 
     def _setRating(self, rating):
-        self.annotations[SINGLEKEY] = float(rating)
+        self.annotations[self.annotation_key] = float(rating)
     def _getRating(self):
-        return self.annotations[SINGLEKEY]
+        return self.annotations[self.annotation_key]
     rating = property(fget=_getRating, fset=_setRating)
 
 
 class UserRating(object):
     implements(IUserRating)
 
+    annotation_key = USERKEY
+    scale = 5
+
     def __init__(self, context):
+        key = self.annotation_key
         self.context = context
         annotations = IAnnotations(context)
-        mapping = annotations.get(USERKEY, None)
+        mapping = annotations.get(key, None)
         ratings = OOBTree()
         anon_ratings = PersistentList()
         if mapping is None:
@@ -39,7 +47,7 @@ class UserRating(object):
                      'ratings': ratings,
                      'anon_ratings': PersistentList(),
                      'anon_average': 0.0}
-            mapping = annotations[USERKEY] = OOBTree(blank)
+            mapping = annotations[key] = OOBTree(blank)
         self.mapping = mapping
 
     def rate(self, rating, username=None):
