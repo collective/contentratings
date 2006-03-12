@@ -1,2 +1,2 @@
-# Make this a package
+# Initialize the Zope 2 permissions stuff
 import permissions

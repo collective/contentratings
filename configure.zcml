@@ -14,7 +14,7 @@
       />
 
   <content class=".rating.EditorialRating">
-    <!-- set_attributes isn't working in Five -->
+    <!-- set_attributes isn't working in Five but should be used here -->
     <require
         permission="contentratings.EditorRate"
         interface=".interfaces.IEditorialRating"
@@ -29,7 +29,7 @@
       />
 
   <content class=".rating.UserRating">
-    <!-- set_attributes isn't working in Five -->
+    <!-- set_attributes isn't working in Five but should be used here -->
     <require
         permission="contentratings.UserRate"
         interface=".interfaces.IUserRating"
