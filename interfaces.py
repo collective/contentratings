@@ -25,6 +25,12 @@ class IEditorialRating(Interface):
         required=False
         )
 
+    scale = Int(
+        title=_(u"Maximum value"),
+        description=_(u"The maximum possible rating"),
+        required=False
+        )
+
 class IUserRating(Interface):
     """A rating class that allows users to set and adjust their ratings of
        content.
@@ -52,4 +58,10 @@ class IUserRating(Interface):
         title=_(u"Number of ratings"),
         description=_(u"The number of times the current has been rated"),
         required=True
+        )
+
+    scale = Int(
+        title=_(u"Maximum value"),
+        description=_(u"The maximum possible rating"),
+        required=False
         )
