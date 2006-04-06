@@ -1,9 +1,13 @@
+from Acquisition import aq_inner
 from BTrees.OOBTree import OOBTree
 from persistent.list import PersistentList
 from zope.interface import implements
+from zope.event import notify
 from zope.app.annotation.interfaces import IAnnotations
 from contentratings.interfaces import IEditorialRating
 from contentratings.interfaces import IUserRating
+from contentratings.events import ObjectUserRatedEvent
+from contentratings.events import ObjectEditorRatedEvent
 
 SINGLEKEY = "contentrating.singlerating"
 USERKEY = "contentrating.userrating"
@@ -24,6 +28,8 @@ class EditorialRating(object):
 
     def _setRating(self, rating):
         self.annotations[self.annotation_key] = float(rating)
+        notify(ObjectEditorRatedEvent(aq_inner(self.context)))
+
     def _getRating(self):
         return self.annotations[self.annotation_key]
     rating = property(fget=_getRating, fset=_setRating)
@@ -63,6 +69,7 @@ class UserRating(object):
         self.mapping['average'] = (sum(ratings.values()) +
                        self.mapping['anon_average']*len(anon_ratings))\
                                    /(len(ratings) + len(anon_ratings))
+        notify(ObjectUserRatedEvent(aq_inner(self.context)))
 
     def _averageRating(self):
         return self.mapping['average']

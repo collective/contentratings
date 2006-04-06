@@ -84,3 +84,38 @@ def addRatingMetadataToCatalog(portal,
             reindex.append(column)
         if reindex:
             cat.refreshCatalog()
+
+index_mapping = {'editorial_rating':
+                    {'name': 'Editorial Rating',
+                     'description': 'The rating given by the site editors',
+                     'enabled': True,
+                     'criteria': ('ATSimpleIntCriterion',)},
+                 'user_rating_tuple':
+                    {'name': 'User Rating (weighted)',
+                     'description': 'Average rating given by users, along '
+                                    'with the number of users who made '
+                                    'ratings',
+                     'enabled': False,
+                     'criteria': ()},
+                 'user_rating_avg':
+                    {'name': 'User Rating',
+                     'description': 'Average rating given by users',
+                     'enabled': True,
+                     'criteria': ('ATSimpleIntCriterion',)},
+                 }
+
+def addSmartFolderIndexAndMetadata(portal,
+                                   indexes=('editorial_rating',
+                                            'user_rating_tuple')):
+    """Adds the default indexes to be available from smartfolders"""
+    atct_config = getToolByName(portal, 'portal_atct', None)
+    if atct_config is not None:
+        for index in indexes:
+            index_info=index_mapping[index]
+            atct_config.updateIndex(index, friendlyName=index_info['name'],
+                                 description=index_info['description'],
+                                 enabled=index_info['enabled'],
+                                 criteria=index_info['criteria'])
+            atct_config.updateMetadata(index, friendlyName=index_info['name'],
+                                 description=index_info['description'],
+                                 enabled=True)

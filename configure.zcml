@@ -36,6 +36,12 @@
         />
   </content>
 
+  <subscriber
+      for=".interfaces.IEditorRatable
+           .interfaces.IObjectEditorRatedEvent"
+      factory=".events.reindexOnEditorRate"
+      />
+
   <include package=".browser" />
 
 </configure>

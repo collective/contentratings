@@ -3,6 +3,7 @@ from zope.app.annotation.interfaces import IAnnotatable
 from zope.schema import Float
 from zope.schema import Int
 from zope.i18nmessageid import MessageIDFactory
+from zope.app.event.interfaces import IObjectModifiedEvent
 _ = MessageIDFactory('contentratings')
 
 class IEditorRatable(IAnnotatable):
@@ -65,3 +66,9 @@ class IUserRating(Interface):
         description=_(u"The maximum possible rating"),
         required=False
         )
+
+class IObjectUserRatedEvent(IObjectModifiedEvent):
+    """An event that is emitted when an object is rated by a user"""
+
+class IObjectEditorRatedEvent(IObjectModifiedEvent):
+    """An event that is emitted when an object is rated by an editor"""

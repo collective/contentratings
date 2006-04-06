@@ -6,7 +6,7 @@
                       stars python:range(1,view.scale+1);
                       star_icon string:/++resource++star_icon.gif;
                       blank_star_icon string:/++resource++blank_star_icon.gif;"
-          tal:attributes="action string:@@editorial_rating_set/rate">
+          tal:attributes="action string:${context/absolute_url}/@@editorial_rating_set/rate">
         <span i18n:translate="">Click to change the editor rating:</span>
         <span class="discreet"
               tal:condition="python:rating is None"
