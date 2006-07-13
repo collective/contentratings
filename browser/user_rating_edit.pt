@@ -13,12 +13,13 @@
               tal:condition="python:rating is None"
               i18n:translate="">(not rated)</span>
         <input type="image"
-               name="rating"
-               value="n"
+               name="ratingimage"
                style="border: 0;"
                tal:repeat="star stars"
                tal:attributes="src python:(rating &lt; star) and blank_star_icon or star_icon;
-                               value star" />
+                               onclick string:rating.value=${star};;"/>
+         <input type="hidden" name="rating" value="0"/>
+
           <div id="rating-labels">
               &nbsp;
               <span style="visibility: hidden; position:absolute"
