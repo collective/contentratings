@@ -27,6 +27,8 @@ If you want to allow some content to be rated you must mark it as both
 *ratable* and *annotatable*.  The standard way to do this is to add the
 following to your product's configure.zcml::
 
+ <include package="contentratings" />
+
  <content class=".content.MyContentClass">
    <implements
        interface="contentratings.interfaces.IEditorRatable
