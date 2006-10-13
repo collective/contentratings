@@ -1,3 +1,4 @@
+<<<<<<< .mine
 ===============
 Content Ratings
 ===============
@@ -23,11 +24,14 @@ First install it somewhere in your *python path* (not in your Products
 directory), $INSTANCE_HOME/lib/python may be a good place to start using it
 with zope.
 
+You'll need to make sure the zcml for this package is loaded, so make sure 
+that the configure.zcml for your product contains::
+
+ <include package="contentratings" />
+
 If you want to allow some content to be rated you must mark it as both
 *ratable* and *annotatable*.  The standard way to do this is to add the
 following to your product's configure.zcml::
-
- <include package="contentratings" />
 
  <content class=".content.MyContentClass">
    <implements
@@ -123,6 +127,13 @@ This will add an ``user_rating_tuple`` and ``editorial_rating`` columns and
 indexes to your portal_catalog.  The ``user_rating_tuple`` stores a tuple
 containing the average rating and the number of ratings, for convenient
 sorting and presentation.
+
+You will also need to make sure that the catalog_stuff module is imported
+whenever your product loads, so that the index methods are registered with
+the catalog.  Do this by placing the following into your Product's __init__.py
+or similar::
+
+  from contentratings.plone_extras import catalog_stuff
 
 
 Multiple Ratings on a Single Object

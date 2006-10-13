@@ -95,7 +95,7 @@ index_mapping = {'editorial_rating':
                      'description': 'Average rating given by users, along '
                                     'with the number of users who made '
                                     'ratings',
-                     'enabled': False,
+                     'enabled': True,
                      'criteria': ()},
                  'user_rating_avg':
                     {'name': 'User Rating',

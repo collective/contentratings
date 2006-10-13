@@ -47,28 +47,35 @@ class UserRating(object):
         annotations = IAnnotations(context)
         mapping = annotations.get(key, None)
         ratings = OOBTree()
-        anon_ratings = PersistentList()
         if mapping is None:
             blank = {'average': 0.0,
                      'ratings': ratings,
-                     'anon_ratings': PersistentList(),
+                     'anon_count': 0,
                      'anon_average': 0.0}
             mapping = annotations[key] = OOBTree(blank)
+        # BBB: migration code
+        if mapping.has_key('anon_ratings'):
+            mapping['anon_count'] = len(mapping['anon_ratings'])
+            del mapping['anon_ratings']
         self.mapping = mapping
 
     def rate(self, rating, username=None):
         ratings = self.mapping['ratings']
-        anon_ratings = self.mapping['anon_ratings']
+        anon_average = self.mapping['anon_average']
+        anon_count = self.mapping['anon_count']
         rating = float(rating)
         if username is not None:
             ratings[username] = rating
         else:
-            anon_ratings.append(rating)
-            self.mapping['anon_average'] = sum(anon_ratings)/len(anon_ratings)
+            anon_total = self.mapping['anon_average']*anon_count
+            anon_count += 1
+            anon_average = (anon_total + rating)/anon_count
+            self.mapping['anon_average'] = anon_average
+            self.mapping['anon_count'] = anon_count
 
         self.mapping['average'] = (sum(ratings.values()) +
-                       self.mapping['anon_average']*len(anon_ratings))\
-                                   /(len(ratings) + len(anon_ratings))
+                                   self.mapping['anon_average']*anon_count)\
+                                      /(len(ratings) + anon_count)
         notify(ObjectUserRatedEvent(aq_inner(self.context)))
 
     def _averageRating(self):
@@ -76,14 +83,14 @@ class UserRating(object):
     averageRating = property(_averageRating)
 
     def _numberOfRatings(self):
-        return len(self.mapping['ratings']) + len(self.mapping['anon_ratings'])
+        return len(self.mapping['ratings']) + self.mapping['anon_count']
     numberOfRatings = property(_numberOfRatings)
 
     def userRating(self, username=None):
         if username is not None:
             return self.mapping['ratings'].get(username, None)
         else:
-            if len(self.mapping['anon_ratings']):
+            if self.mapping['anon_count']:
                 return self.mapping['anon_average']
             else:
                 return None
