@@ -74,14 +74,15 @@ Using the Views
 To include the views in your page layout just include the following snippet in
 your template::
 
- <tal:editorialrating tal:define="edit_rating context/@@editorial_rating_set|nothing">
-   <span tal:condition="edit_rating"
- 	    tal:replace="structure edit_rating" />
-   <span tal:condition="not:edit_rating"
-	     tal:replace="structure context/@@editorial_rating_view|nothing"/>
- </tal:editorialrating>
- <span tal:replace="structure context/@@user_rating_view|nothing" />
- <span tal:replace="structure context/@@user_rating_set|nothing" />
+ <tal:editorial-view tal:on-error="nothing"
+                     tal:replace="structure context/@@editorial_rating_set" />
+ <tal:editorial-rate tal:on-error="nothing"
+                     tal:replace="structure context/@@editorial_rating_set" />
+
+ <tal:user-view tal:on-error="nothing"
+                tal:replace="structure context/@@user_rating_view" />
+ <tal:user-rate tal:on-error="nothing"
+                tal:replace="structure context/@@user_rating_set" />
 
 Including this at the end of Plone's document_byline.pt, for example, would be
 appropriate.  It will only display ratings when the current content is ratable
