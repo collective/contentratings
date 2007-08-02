@@ -46,10 +46,9 @@ class UserRating(object):
         self.context = context
         annotations = IAnnotations(context)
         mapping = annotations.get(key, None)
-        ratings = OOBTree()
         if mapping is None:
             blank = {'average': 0.0,
-                     'ratings': ratings,
+                     'ratings': OOBTree(),
                      'anon_count': 0,
                      'anon_average': 0.0}
             mapping = annotations[key] = OOBTree(blank)
