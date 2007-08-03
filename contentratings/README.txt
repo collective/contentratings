@@ -75,7 +75,7 @@ To include the views in your page layout just include the following snippet in
 your template::
 
  <tal:editorial-view tal:on-error="nothing"
-                     tal:replace="structure context/@@editorial_rating_set" />
+                     tal:replace="structure context/@@editorial_rating_view" />
  <tal:editorial-rate tal:on-error="nothing"
                      tal:replace="structure context/@@editorial_rating_set" />
 
