@@ -24,8 +24,8 @@ try:
             setattr(ApplicationDefaultPermissions, mangled, roles)
 
     setDefaultRoles(EditorRate, ('Manager', 'Reviewer'))
-    setDefaultRoles(ViewEditorialRating, ('Anonymous',))
-    setDefaultRoles(UserRate, ('Anonymous',))
-    setDefaultRoles(ViewUserRating, ('Anonymous',))
+    setDefaultRoles(ViewEditorialRating, ('Anonymous', 'Authenticated',))
+    setDefaultRoles(UserRate, ('Anonymous', 'Authenticated',))
+    setDefaultRoles(ViewUserRating, ('Anonymous','Authenticated',))
 except ImportError:
     pass
