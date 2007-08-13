@@ -15,6 +15,7 @@
       class=".EditorialRatingSetView"
       template="editor_rating_edit.pt"
       permission="contentratings.EditorRate"
+      allowed_attributes="rate"
       />
 
   <page
@@ -31,6 +32,7 @@
       class=".UserRatingSetView"
       template="user_rating_edit.pt"
       permission="contentratings.UserRate"
+      allowed_attributes="rate"
       />
 
   <resource
