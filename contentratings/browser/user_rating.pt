@@ -3,7 +3,7 @@
                      stars python:range(1,view.scale+1);
                      star_icon string:/++resource++star_icon.gif;
                      blank_star_icon string:/++resource++blank_star_icon.gif;">
-        <span i18n:translate="">Average Rating:</span>
+        <span i18n:translate="" class="label">Average Rating:</span>
         <img tal:repeat="star stars"
              tal:attributes="src python:avg &lt; star and blank_star_icon or star_icon;
                              alt star" />

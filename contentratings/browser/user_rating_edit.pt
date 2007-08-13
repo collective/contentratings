@@ -8,7 +8,7 @@
                       blank_star_icon string:/++resource++blank_star_icon.gif;"
           tal:condition="view/canRate"
           tal:attributes="action string:${context/absolute_url}/@@user_rating_set/rate">
-        <span i18n:translate="">Click to change your rating:</span>
+        <span i18n:translate="" class="label">Click to change your rating:</span>
         <span class="discreet"
               tal:condition="python:rating is None"
               i18n:translate="">(not rated)</span>

@@ -4,7 +4,7 @@
                      star_icon string:/++resource++star_icon.gif;
                      blank_star_icon string:/++resource++blank_star_icon.gif;"
          tal:condition="not:nocall:edit_view/rate|nothing">
-        <span i18n:translate="">Editorial Rating:</span>
+        <span i18n:translate="" class="label">Editorial Rating:</span>
         <img tal:repeat="star stars"
              tal:attributes="src python:rating &lt; star and blank_star_icon or star_icon;
                              alt star" />
