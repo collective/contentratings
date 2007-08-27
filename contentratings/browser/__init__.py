@@ -151,8 +151,8 @@ class UserRatingSetView(BrowserView):
         return not (user is None and
              self.request.cookies.get(self.getContentKey(), None) is not None)
 
-    def userRating(self):
-        return self.adapted.userRating(self._getUser())
+    def userRating(self, userid=None):
+        return self.adapted.userRating(userid or self._getUser())
 
     def _getScale(self):
         return self.adapted.scale
