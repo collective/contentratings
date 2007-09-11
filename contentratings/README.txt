@@ -36,7 +36,7 @@ following to your product's configure.zcml::
  <content class=".content.MyContentClass">
    <implements
        interface="contentratings.interfaces.IEditorRatable
-      			 zope.app.annotation.interfaces.IAttributeAnnotatable"
+      			 zope.annotation.interfaces.IAttributeAnnotatable"
        />
  </content>
 
@@ -189,7 +189,7 @@ Consider a simple object, i.e. a SampleContainer::
 In order to mark it ratable, it also needs to annotatable, for example
 attribute-annotatable::
 
-  >>> from zope.app.annotation.interfaces import IAttributeAnnotatable
+  >>> from zope.annotation.interfaces import IAttributeAnnotatable
   >>> from contentratings.interfaces import IEditorRatable
   >>> from contentratings.interfaces import IUserRatable
   >>> from zope.interface import directlyProvides

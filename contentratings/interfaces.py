@@ -1,10 +1,10 @@
 from zope.interface import Interface
-from zope.app.annotation.interfaces import IAnnotatable
+from zope.annotation.interfaces import IAnnotatable
 from zope.schema import Float
 from zope.schema import Int
-from zope.i18nmessageid import MessageIDFactory
+from zope.i18nmessageid import MessageFactory
 from zope.app.event.interfaces import IObjectModifiedEvent
-_ = MessageIDFactory('contentratings')
+_ = MessageFactory('contentratings')
 
 class IEditorRatable(IAnnotatable):
     """Marker interface that promises that an implementing object may be

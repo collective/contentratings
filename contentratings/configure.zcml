@@ -3,7 +3,7 @@
            i18n_domain="contentratings">
 
   <include file="permissions.zcml" />
-  <include package="zope.app.annotation" />
+  <include package="zope.annotation" />
   <!-- Rating -->
 
   <adapter
@@ -39,7 +39,7 @@
   <subscriber
       for=".interfaces.IEditorRatable
            .interfaces.IObjectEditorRatedEvent"
-      factory=".events.reindexOnEditorRate"
+      handler=".events.reindexOnEditorRate"
       />
 
   <include package=".browser" />

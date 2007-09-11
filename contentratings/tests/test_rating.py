@@ -1,9 +1,9 @@
 import unittest
 from zope.testing.doctestunit import DocFileSuite
 from zope.app.tests import ztapi, placelesssetup
-from zope.app.annotation.interfaces import IAnnotations
-from zope.app.annotation.interfaces import IAttributeAnnotatable
-from zope.app.annotation.attribute import AttributeAnnotations
+from zope.annotation.interfaces import IAnnotations
+from zope.annotation.interfaces import IAttributeAnnotatable
+from zope.annotation.attribute import AttributeAnnotations
 
 from contentratings.interfaces import IEditorRatable
 from contentratings.interfaces import IUserRatable
