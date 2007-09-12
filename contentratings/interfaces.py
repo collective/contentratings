@@ -1,5 +1,10 @@
 from zope.interface import Interface
-from zope.annotation.interfaces import IAnnotatable
+try:
+    from zope.annotation.interfaces import IAnnotatable
+except ImportError, e:
+    # Zope 2.9 support
+    from zope.app.annotation.interfaces import IAnnotatable
+
 from zope.schema import Float
 from zope.schema import Int
 from zope.i18nmessageid import MessageFactory
