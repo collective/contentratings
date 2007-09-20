@@ -3,7 +3,11 @@ from BTrees.OOBTree import OOBTree
 from persistent.list import PersistentList
 from zope.interface import implements
 from zope.event import notify
-from zope.annotation.interfaces import IAnnotations
+try:
+    from zope.app.annotation.interfaces import IAnnotations
+except ImportError, err:
+    # Zope 2.10 support
+    from zope.annotation.interfaces import IAnnotations
 from contentratings.interfaces import IEditorialRating
 from contentratings.interfaces import IUserRating
 from contentratings.events import ObjectUserRatedEvent
