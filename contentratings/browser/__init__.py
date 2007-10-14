@@ -45,7 +45,7 @@ class EditorialRatingSetView(EditorialRatingView):
 
     def post_rate(self, orig_url=None):
         if orig_url is not None:
-            q_str = 'portal_status_message=You have changed your rating'
+            q_str = 'portal_status_message=%s' % _('You have changed your rating').decode('utf-8')
             q_spacer= '?' in orig_url and '&' or '?'
             res = self.request.RESPONSE
             return res.redirect(orig_url+q_spacer+q_str)

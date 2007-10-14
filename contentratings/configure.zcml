@@ -52,5 +52,7 @@
       />
 
   <include package=".browser" />
-
+  
+  <i18n:registerTranslations directory="locales" />
+  
 </configure>

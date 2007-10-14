@@ -1,4 +1,5 @@
     <form id="editorial-rating-edit"
+    	  i18n:domain="contentratings"
           method="POST"
           action="rating_action"
           name="single_rating_form"
@@ -7,10 +8,10 @@
                       star_icon string:/++resource++star_icon.gif;
                       blank_star_icon string:/++resource++blank_star_icon.gif;"
           tal:attributes="action string:${context/absolute_url}/@@editorial_rating_set/rate">
-        <span i18n:translate="" class="label">Click to change the editor rating:</span>
+        <span i18n:translate="click_to_change_editor_rating" class="label">Click to change the editor rating:</span>
         <span class="discreet"
               tal:condition="python:rating is None"
-              i18n:translate="">(not rated)</span>
+              i18n:translate="not_rated">(not rated)</span>
         <input type="image"
                name="imagerating"
                style="border: 0;"
