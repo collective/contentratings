@@ -2,6 +2,10 @@ from zope.interface import implements
 from zope.component.exceptions import ComponentLookupError
 from zope.app.exception.interfaces import UserError
 from zope.app.location.interfaces import ISublocations
+from zope.i18nmessageid import MessageFactory
+_ = MessageFactory('contentratings')
+from Products.Archetypes.utils import addStatusMessage
+
 from Acquisition import Explicit
 try:
     from Products.Five.browser import BrowserView
@@ -9,6 +13,7 @@ except ImportError:
     from zope.app.publisher.browser import BrowserView
 from contentratings.interfaces import IEditorialRating
 from contentratings.interfaces import IUserRating
+from contentratings.browser.interfaces import IEditorialRatingView
 
 KEYBASE = 'anon-rated-'
 
@@ -21,6 +26,8 @@ except ImportError:
 class EditorialRatingView(BrowserView):
     """A view for getting the rating information"""
 
+    implements(IEditorialRatingView)
+    
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -45,10 +52,11 @@ class EditorialRatingSetView(EditorialRatingView):
 
     def post_rate(self, orig_url=None):
         if orig_url is not None:
-            q_str = 'portal_status_message=%s' % _('You have changed your rating').decode('utf-8')
+            message = '%s' % _('You have changed your rating').decode('utf-8')
             q_spacer= '?' in orig_url and '&' or '?'
+            addStatusMessage(self.request, message)
             res = self.request.RESPONSE
-            return res.redirect(orig_url+q_spacer+q_str)
+            return res.redirect(orig_url+q_spacer)
 
 
 class UserRatingView(BrowserView):

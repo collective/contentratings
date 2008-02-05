@@ -7,6 +7,7 @@
       class=".EditorialRatingView"
       template="editor_rating.pt"
       permission="contentratings.ViewEditorialRating"
+      allowed_interface=".interfaces.IEditorialRatingView"
       />
 
   <page
