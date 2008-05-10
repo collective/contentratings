@@ -1,99 +1,73 @@
-from Acquisition import aq_inner
-from BTrees.OOBTree import OOBTree
-from persistent.list import PersistentList
+from datetime import datetime
+from persistent import Persistent
 from zope.interface import implements
-from zope.event import notify
-try:
-    from zope.app.annotation.interfaces import IAnnotations
-except ImportError, err:
-    # Zope 2.10 support
-    from zope.annotation.interfaces import IAnnotations
-from contentratings.interfaces import IEditorialRating
-from contentratings.interfaces import IUserRating
-from contentratings.events import ObjectUserRatedEvent
-from contentratings.events import ObjectEditorRatedEvent
+from zope.deferredimport import deprecatedFrom
+from contentratings.interfaces import IRating
 
-SINGLEKEY = "contentrating.singlerating"
-USERKEY = "contentrating.userrating"
+_marker = []
 
-class EditorialRating(object):
-    implements(IEditorialRating)
+deprecatedFrom('Rating categories should be created using the category '
+               'factory or the zcml directive.  The UserRating and '
+               'EditorialRating adapters are now deprecated and may behave '
+               'differently.',
+               'contentratings.bbb', 'UserRating', 'EditorialRating')
 
-    annotation_key = SINGLEKEY
-    scale = 5
+class NPRating(float):
+    """A non-persistent IRating object, for storages which store
+    outside the ZODB, or which have no desire to annotate/mutate
+    ratings."""
+    implements(IRating)
 
-    def __init__(self, context):
-        key = self.annotation_key
-        self.context = context
-        self.annotations = IAnnotations(context)
-        rating = self.annotations.get(key, None)
-        if rating is None:
-            rating = self.annotations[key] = None
+    # No security on this
+    __allow_access_to_unprotected_subobjects__ = True
 
-    def _setRating(self, rating):
-        self.annotations[self.annotation_key] = float(rating)
-        notify(ObjectEditorRatedEvent(aq_inner(self.context)))
+    def __new__(cls, rating, userid=None):
+        self = float.__new__(cls, rating)
+        self.userid = userid
+        self.timestamp = datetime.utcnow()
+        return self
 
-    def _getRating(self):
-        return self.annotations[self.annotation_key]
-    rating = property(fget=_getRating, fset=_setRating)
+    def __repr__(self):
+        return '<%s %r by %r on %s>' %(self.__class__.__name__, float(self),
+                                       self.userid, self.timestamp.isoformat())
+
+    def __str__(self):
+        return str(float(self))
 
 
-class UserRating(object):
-    implements(IUserRating)
+# We can't inherit float and Persistent, because of conflicting C bases, so
+# we duck-type
+class Rating(Persistent):
+    """Behaves like a float with some extra attributes"""
+    implements(IRating)
 
-    annotation_key = USERKEY
-    scale = 5
+    # No security on this
+    __allow_access_to_unprotected_subobjects__ = True
 
-    def __init__(self, context):
-        key = self.annotation_key
-        self.context = context
-        annotations = IAnnotations(context)
-        mapping = annotations.get(key, None)
-        if mapping is None:
-            blank = {'average': 0.0,
-                     'ratings': OOBTree(),
-                     'anon_count': 0,
-                     'anon_average': 0.0}
-            mapping = annotations[key] = OOBTree(blank)
-        # BBB: migration code
-        if mapping.has_key('anon_ratings'):
-            mapping['anon_count'] = len(mapping['anon_ratings'])
-            del mapping['anon_ratings']
-        self.mapping = mapping
+    def __init__(self, rating, userid=None):
+        self._rating = float(rating)
+        self.userid = userid
+        self.timestamp = datetime.utcnow()
 
-    def rate(self, rating, username=None):
-        ratings = self.mapping['ratings']
-        anon_average = self.mapping['anon_average']
-        anon_count = self.mapping['anon_count']
-        rating = float(rating)
-        if username is not None:
-            ratings[username] = rating
-        else:
-            anon_total = self.mapping['anon_average']*anon_count
-            anon_count += 1
-            anon_average = (anon_total + rating)/anon_count
-            self.mapping['anon_average'] = anon_average
-            self.mapping['anon_count'] = anon_count
+    __repr__ = NPRating.__repr__.im_func
+    __str__ = NPRating.__str__.im_func
 
-        self.mapping['average'] = (sum(ratings.values()) +
-                                   self.mapping['anon_average']*anon_count)\
-                                      /(len(ratings) + anon_count)
-        notify(ObjectUserRatedEvent(aq_inner(self.context)))
+    def __add__(self, other):
+        """Make sure we can add ratings"""
+        return float(self) + float(other)
 
-    def _averageRating(self):
-        return self.mapping['average']
-    averageRating = property(_averageRating)
+# Apply float-like behaviors to our persistent rating class by adding
+# special methods from float to obtain thorough duck-typing
+def _float_proxy(name):
+    def floatish(self, *args, **kwargs):
+        return getattr(self._rating, name)(*args, **kwargs)
+    # make sure our methods get proper names and doc strings
+    floatish.__doc__ = getattr(float, name).__doc__
+    floatish.__name__ = name
+    return floatish
 
-    def _numberOfRatings(self):
-        return len(self.mapping['ratings']) + self.mapping['anon_count']
-    numberOfRatings = property(_numberOfRatings)
-
-    def userRating(self, username=None):
-        if username is not None:
-            return self.mapping['ratings'].get(username, None)
-        else:
-            if self.mapping['anon_count']:
-                return self.mapping['anon_average']
-            else:
-                return None
+for fname in dir(float()):
+    func = getattr(float(), fname)
+    # don't overwrite anything
+    if callable(func) and fname not in dir(Rating):
+        setattr(Rating, fname, _float_proxy(fname))

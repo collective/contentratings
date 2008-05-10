@@ -2,289 +2,385 @@
 Content Ratings
 ===============
 
-This is a simple python product driven by Zope 3, which is intended to make it
-easy to let users (optionally including anonymous) or editors rate content.
-It provides a set of interfaces, adapters and views to allow the application
-of ratings to any IAnnotatable object.
+This is a simple python package driven by Zope 3, which lets users
+(including un-authenticated users) rate content.  It provides a set of
+interfaces, adapters and views to allow the application of ratings to
+any IAnnotatable object.
 
-Requirements:
+Dependencies:
 
-Zope 2.8.5+ or 2.9.1+
-Five 1.2.1+ or 1.3.1+
+BTrees
+persistent
+zope.annotations
+zope.app.container
+zope.app.testing
+zope.interface
+zope.component
+zope.lifecycleevent
+zope.location
+zope.schema
+zope.tales
 
-Should work with Zope 3.1 or 3.2, but the user rating views need to be fixed
-to get authentication credentials.
+All of these packages are included in Zope 2.10+ and Zope 3.2+.
 
 
-Using it with your Product
-==========================
+Using contentratings in Your Packages or Products
+=================================================
 
 First install it somewhere in your *python path* (not in your Products
 directory), $INSTANCE_HOME/lib/python may be a good place to start using it
-with zope.
+with zope.  It can be installed as an egg from the Python Cheeseshop (PyPI).
 
-You'll need to make sure the zcml for this package is loaded, so make sure 
-that the configure.zcml for your product contains::
+You'll need to load the zcml for this package, so make sure that the
+configure.zcml for your application contains::
 
  <include package="contentratings" />
 
-If you want to allow some content to be rated you must mark it as both
-*ratable* and *annotatable*.  The standard way to do this is to add the
-following to your product's configure.zcml::
+If you want to allow some content to be rated you must mark it as
+*annotatable*.  This is because the Rating Storage is contained in an
+annotation on the content object.  The standard way to do this is to
+to add the following to your product's configure.zcml::
 
  <content class=".content.MyContentClass">
    <implements
-       interface="contentratings.interfaces.IEditorRatable
-      			 zope.annotation.interfaces.IAttributeAnnotatable"
+       interface="zope.annotation.interfaces.IAttributeAnnotatable"
        />
  </content>
 
-If you want the content to be UserRatable instead of or in addition to being
-Editor ratable you just add ``contentratings.interfaces.IUserRatable`` to the
-interface declaration.
 
-To determine who gets to rate content and view ratings there are a few
-permissions listed below (with their Zope2 equivalents in parentheses)::
+Rating Categories
+=================
 
- contentratings.EditorRate (Content Ratings: Editor Rate)
- contentratings.ViewEditorialRating (Content Ratings: View Editorial Rating)
- contentratings.UserRate (Content Ratings: User Rate)
- contentratings.ViewUserRating (Content Ratings: View User Rating)
-
-For example to disallow anonymous users from rate objects, just remove the
-``contentratings.UserRate`` permission from Anonymous in the ZMI.  By default
-Anonymous is granted UserRate and all the viewing Permissions, and
-``Reviewer`` and ``Manager`` are granted the EditorRate permission.
-
-You will also need to make the ratable content object ``five:traversable`` if
-you are using Zope 2 with Five, this is done by adding the following to your
-zcml::
-
- <five:traversable class=".content.MyContentClass" />
-
-Make sure to include the five namspace
-(``xmlns:five="http://namespaces.zope.org/five"``) in your configure
-directive.
+This package provides an infrastructure for defining `Rating
+Categories`.  A `Rating Category` is an object implementing the
+`IRatingCategory` interface, specifying a `title`, `description` (for
+the UI), `view_name` (how the rating should be rendered and managed in
+the UI), TALES expressions which determine when ratings can be viewed
+or set (`read_expr` and `write_expr`), an `order` (for the UI), and
+finally a `storage` (a factory which creates a persistent
+implementation of a rating API to be stored in an annotation). All of
+these attributes except `title` are optional, with sensible default
+values provided.  Any object may have multiple Rating Categories
+applied to it each registered with a unique `name`.
 
 
-Using the Views
-===============
+The Default Categories
+----------------------
 
-To include the views in your page layout just include the following snippet in
-your template::
+This package's default configuration provides two rating categories.
+One for user ratings, and one for editorial ratings.  They are
+registered for the marker interfaces `IUserRatable` and
+`IEditorRatable` respectively.  The TALES expressions used to
+determine when they apply are designed to work with objects contained
+in a Zope 2 CMF application (primarily for backwards compatibility
+with older versions of `contentratings` which used direct permission
+checks). Unless they want to allow all users to set and
+read the ratings, other applications will need to define categories with
+custom conditions.
 
- <tal:editorial-view tal:on-error="nothing"
-                     tal:replace="structure context/@@editorial_rating_view" />
- <tal:editorial-rate tal:on-error="nothing"
-                     tal:replace="structure context/@@editorial_rating_set" />
+Let's demonstrate how these categories might be used.  We need to
+create some content and mark it with our marker interface::
 
- <tal:user-view tal:on-error="nothing"
-                tal:replace="structure context/@@user_rating_view" />
- <tal:user-rate tal:on-error="nothing"
-                tal:replace="structure context/@@user_rating_set" />
+    >>> from zope.app.container.sample import SampleContainer
+    >>> content = SampleContainer()
+    >>> from contentratings.interfaces import IUserRatable
+    >>> from zope.interface import alsoProvides
+    >>> alsoProvides(content, IUserRatable)
 
-Including this at the end of Plone's document_byline.pt, for example, would be
-appropriate.  It will only display ratings when the current content is ratable
-and the user has permission to view them.  If the user has permission to edit
-the rating then the edit mode will be shown below the current rating for User
-ratings, or shown instead to the current rating for Editorial ratings.
+Now we can adapt to the rating category using the IUserRating interface::
 
-Additionally, these views rely on some images provided as resources being
-available at the root of the site, which may be either the zope root, or the
-root of a virtual hosted portal.  In order to make these resources available
-your root object must be made ``five:traversable`` as well.  To make the zope
-root traversable add the following::
+    >>> from contentratings.interfaces import IUserRating
+    >>> adapted = IUserRating(content)
+    >>> adapted.title
+    u'User Rating'
+    >>> float(adapted.averageRating)
+    0.0
+    >>> rating = adapted.rate(7.0)
+    >>> float(adapted.averageRating)
+    7.0
+    >>> adapted.numberOfRatings
+    1
+    >>> rating = adapted.rate(8.0, 'me')
+    >>> float(adapted.averageRating)
+    7.5
+    >>> adapted.numberOfRatings
+    2
 
- <five:traversable class="OFS.Application.Application" />
+For more details on the IUserRating API see `tests/userstorage.txt`.
 
-To make a virtual hosted CMF or Plone portal traversable use the following:::
+Editorial ratings are applied similarly, but have a much simpler
+implementation::
 
- <five:traversable class="Products.CMFCore.PortalObject.PortalObjectBase" />
+    >>> from contentratings.interfaces import IEditorRatable, IEditorialRating
+    >>> alsoProvides(content, IEditorRatable)
+    >>> adapted = IEditorialRating(content)
+    >>> adapted.title
+    u'Editor Rating'
+    >>> adapted.rating is None
+    True
+    >>> adapted.rating = 6.0
+    >>> float(adapted.rating)
+    6.0
+    >>> adapted.rating = 8.0
+    >>> float(adapted.rating)
+    8.0
 
-As above, ensure that you have the Fiveconfiguration namespace available.
+See `tests/editorialstorage.txt` for details on how the
+IEditorialRating API works.
 
+Let's remove these markers now so that we can examine custom
+categories::
 
-Working With the Plone Catalog
-==============================
+    >>> from zope.interface import noLongerProvides
+    >>> noLongerProvides(content, IUserRatable)
+    >>> noLongerProvides(content, IEditorRatable)
+    >>> IUserRatable(content) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    ...
+    TypeError: ('Could not adapt', ...)
+    >>> IEditorialRating(content) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    ...
+    TypeError: ('Could not adapt', ...)
 
-There are some special methods in the plone_extras sub-package to make it easy
-to store ratings in plone's portal_catalog.  To enable this feature, just add
-the following to your product's ``__init__.py``::
+Custom Rating Categories
+------------------------
 
- # Add IndexableObjectWrappers for ratings:
- from contentratings.plone_extras import catalog_stuff
+There are two ways to create a new rating category, declaratively
+using ZCML, or programatically using the category factory directly
+from python.  Let's look at the ZCML way first.  To make it work we
+need to enable the zcml directive::
 
-Which registers the adapters as indexable attributes, then add the indexes
-and/or metadata to the catalog using either GenericSetup, or adding the
-following to your ``Extensions/Install.py`` ``install()`` method::
+    >>> from zope.configuration import xmlconfig
+    >>> import contentratings
+    >>> context = xmlconfig.file('meta.zcml', contentratings)
 
- from contentratings.plone_extras.catalog_stuff import addRatingIndexesToCatalog
- from contentratings.plone_extras.catalog_stuff import addRatingMetadataToCatalog
- addRatingIndexesToCatalog(self)
- addRatingMetadataToCatalog(self)
+Loading the package configuration will do the above automatically.
 
-This will add an ``user_rating_tuple`` and ``editorial_rating`` columns and
-indexes to your portal_catalog.  The ``user_rating_tuple`` stores a tuple
-containing the average rating and the number of ratings, for convenient
-sorting and presentation.
+Now we register our rating category using the
+`contentratings:category` directive::
 
-You will also need to make sure that the catalog_stuff module is imported
-whenever your product loads, so that the index methods are registered with
-the catalog.  Do this by placing the following into your Product's __init__.py
-or similar::
-
-  from contentratings.plone_extras import catalog_stuff
-
-
-Multiple Ratings on a Single Object
-===================================
-
-If you want to allow multiple types of ratings (so people can rate e.g. value,
-quality, clarity) on a single object you can provide multiple adapters for the
-object.  First you need a custom adapter class::
-
- from contentratings.rating import UserRating
-
- class MyCustomRating(UserRating):
-     key='myproduct.customrating'
-     scale=10
-
-Key is required and must be unique as it's the key for the annotation in which
-the rating will be stored.  Scale is optional and merely provides a ui hint
-for the possible range of values.
-
-You must then register this adapter for your class via zcml, because it is
-providing the same interface as an existing adapter, you need to make it a
-named adapter:
-
-  <adapter
-      for=".interfaces.IUserRatable"
-      provides=".interfaces.IUserRating"
-      factory="MyProduct.MyCustomRating"
-      trusted="true"
-      name="my_rating"
-      />
-
-For the moment you will need to provide a custom view for this rating which
-looks it up by name, using ``getAdapter(obj, IUserRating, "my_rating")``.
-Eventually a view may be provided by default which iterates through all
-IUserRating adapters and presents them.
+    >>> context = xmlconfig.string("""
+    ... <configure
+    ...    xmlns:contentratings="http://namespaces.plone.org/contentratings">
+    ...  <contentratings:category
+    ...      for="zope.app.container.sample.SampleContainer"
+    ...      title="My Rating Category"
+    ...      />
+    ... </configure>""", context=context)
 
 
-Using The Adapters
+Here we have made use of all of the category default values.  As a
+result we have registered a category which uses the default ZODB
+storage and `IUserRating` API, with no restrictions on who can get
+and set ratings.  We can verify this easily since the categories are
+simply adapters providing the rating interface provided by the
+(default) storage::
+
+    >>> from contentratings.interfaces import IUserRating
+    >>> from zope.app.container.sample import SampleContainer
+    >>> content = SampleContainer()
+    >>> adapted = IUserRating(content)
+    >>> IUserRating.providedBy(adapted)
+    True
+    >>> adapted.context is content
+    True
+    >>> adapted.title
+    u'My Rating Category'
+
+Note that because we provided no name in the configuration, the
+adapter was registered as the default (unnamed) adapter.  The name of
+the category is the name under which the adapter is registered and it
+is stored in the category's name attribute::
+
+    >>> adapted.name
+    ''
+
+To provide multiple categories, just register them with unique names::
+
+    >>> context = xmlconfig.string("""
+    ... <configure
+    ...    xmlns:contentratings="http://namespaces.plone.org/contentratings">
+    ...  <contentratings:category
+    ...      for="zope.app.container.sample.SampleContainer"
+    ...      title="My Other Rating Category"
+    ...      name="other"
+    ...      />
+    ... </configure>""", context=context)
+    >>> from zope.component import getAdapter
+    >>> adapted = getAdapter(content, IUserRating, name=u'other')
+    >>> adapted.title
+    u'My Other Rating Category'
+    >>> adapted.name
+    u'other'
+
+If we wanted to accomplish the same thing programatically, we could
+instantiate the factory directly and register it as an adpater::
+
+    >>> from contentratings.category import RatingsCategoryFactory
+    >>> category = RatingsCategoryFactory(title=u'Another Title', name=u'another')
+    >>> from zope.component import provideAdapter
+    >>> provideAdapter(category, adapts=(SampleContainer,), provides=IUserRating,
+    ...                name=u'another')
+    >>> adapted = getAdapter(content, IUserRating, name=u'another')
+    >>> adapted.title
+    u'Another Title'
+    >>> adapted.name
+    u'another'
+
+This involves some redundancy, since the interface provided by the
+storage has to be explicitly declared, and the category name has to be
+provided twice.  Otherwise they are equivalent.
+
+Note that categories are adapters, and adapters may only be registered under
+the same name for different interfaces/classes.  As usual, for a given name,
+the adapter registered for the most specific interface will be chosen.
+
+The Rating Manager
 ==================
 
-The rating system allows users to rate objects on a continuous scale
-(a discrete scale can be enforced by a view).  We distinguish
-*ratable* objects which have to annotatable and implement ``IEditorRatable``
-and/or ``IUserRatable`` and the ``IUserRating`` and ``IEditorialRating``
-adapters for ratable objects which actually set and read the ratings.
+When the adapter corresponding to a given rating category is
+queried, the object returned is not actually a `Rating Category`
+itself, but a `Rating Manager`::
 
-Consider a simple object, i.e. a SampleContainer::
+    >>> adapted # doctest: +ELLIPSIS
+    <contentratings.category.RatingCategoryAdapter ...>
+    >>> from contentratings.interfaces import IRatingManager
+    >>> IRatingManager.providedBy(adapted)
+    True
+    
+The Rating Manager provides the API of the storage, and also many of
+the attributes of the category.  It protects direct access to the
+storage by checking the expressions specified for the category.  The
+manager is implemented as a multi-adapter on the category and the
+context, but generally it should not be retrieved directly.  The
+category adapter is responsible for retrieving it.  The manager is
+responsible for setting up the category specific storage on the
+content object.
 
-  >>> from zope.app.container.sample import SampleContainer
-  >>> my_container = SampleContainer()
+    >>> adapted.category # doctest: +ELLIPSIS
+    <contentratings.category.RatingsCategoryFactory ...>
+    >>> adapted.context # doctest: +ELLIPSIS
+    <zope.app.container.sample.SampleContainer ...>
+    >>> adapted.storage # doctest: +ELLIPSIS
+    <contentratings.storage.UserRatingStorage ...>
+    >>> isinstance(adapted.storage, adapted.category.storage)
+    True
 
-In order to mark it ratable, it also needs to annotatable, for example
-attribute-annotatable::
+Since the rating manager is responsible for security checks and
+populating the TALES expression context, it is very likely that
+applications will want to replace this component (locally or for
+specific content) with a subclass to provide application specific
+security.
 
-  >>> from zope.annotation.interfaces import IAttributeAnnotatable
-  >>> from contentratings.interfaces import IEditorRatable
-  >>> from contentratings.interfaces import IUserRatable
-  >>> from zope.interface import directlyProvides
-  >>> directlyProvides(my_container, IAttributeAnnotatable, IEditorRatable, IUserRatable)
+The Views
+=========
 
-Now we can rate the object using the ``IEditorialRating`` adapter, which
-stores a single rating for each object.  Anybody with permission to rate the
-object overwrites the old rating::
+The Rating Views
+----------------
 
-  >>> from contentratings.interfaces import IEditorialRating
-  >>> rating = IEditorialRating(my_container)
-  >>> rating.rating = 5
-  >>> rating.rating
-  5.0
-  >>> rating.rating = 10
-  >>> rating.rating
-  10.0
+Each category has an associated `view_name` which is simply the name
+of a view registered for the rating interface (e.g. IUserRating) to be
+used when rendering the category in the UI.  These are looked up on
+the Rating Manager and have access to the `IRatingManager` API, as
+well as the protected rating storage API, as provided by the
+manager (e.g. IUserRating).
 
-We need to make sure the rating sticks to the object::
+Resuable base classes for rating views are provided in
+`browser/basic.py` (`BasicUserRatingView` and
+`BasicEditorialRatingView`).  These views use a named vocabulary to
+validate input and use the IRatingManager API to determine who can and
+cannot rate content.  The package configuration provides a few rating
+views by default::
 
-  >>> rating = IEditorialRating(my_container)
-  >>> rating.rating
-  10.0
+  ratings_view (default):  A rating using 1-5 large (25px) stars
+  small_stars: A rating using 1-5 small (10px) stars
+  three_small_stars: A rating using 1-3 small (10px) stars
 
-The ``IUserRating`` adapter is a bit more complicated, when a user rates an
-object their rating is associated with them and they can later change it.
-Anonymous users may also rate content (though this can be disabled globally).
-The average of all ratings and the number of ratings can be easily obtained::
+These are each highly customizable using CSS. They are all registered
+for IUserRating.  Additionally, there is a `rating_view` is registered
+for IEditorialRating.
 
-  >>> from contentratings.interfaces import IUserRating
-  >>> rating = IUserRating(my_container)
-  >>> rating.rate(6, 'me')
-  >>> rating.rate(8, 'you')
-  >>> rating.userRating('me')
-  6.0
-  >>> rating.userRating('you')
-  8.0
+The views are responsible for looking up a rating vocabulary and
+validating user input, as well as rendering the user interface.  The
+security is enforced by the `Rating Manager` used by the view, however
+the view may go directly to the storage from rating manager if it
+wants to override the expression checking (e.g. showing a user their
+own ratings, though they cannot see others).  Creating new views
+(e.g. non-starred ratings) is quite simple.
 
-We can get the average rating and number of ratings as well::
+A utility is provided for efficiently determining a reusable session
+key in a generic manner.  This can be used to prevent repeat voting
+from anonymous users.  Applications which implement their own
+anonymous session tracking mechanisms may override this utility
+locally if desired.
 
-  >>> rating.averageRating
-  7.0
-  >>> rating.numberOfRatings
-  2
+The Aggregator Views
+--------------------
 
-We can update our user ratings, and the average will change accordingly::
+There are also views which find all the rating categories available on
+the content object being viewed, rendering them in order.  These are
+intended to be used within a viewlet, portlet, macro, or similar.  The
+aggregator view for user ratings is called `user-ratings` and the one
+for editorial ratings is called `editorial-ratings`.
 
-  >>> rating.rate(4, 'me')
-  >>> rating.userRating('me')
-  4.0
-  >>> rating.numberOfRatings
-  2
-  >>> rating.averageRating
-  6.0
 
-Anonymous ratings are a little trickier as they are averaged for all
-anonymous entries::
+The Storage
+===========
 
-  >>> rating.rate(9)
-  >>> rating.numberOfRatings
-  3
-  >>> rating.averageRating
-  7.0
+Though the `UserRatingStorage` should be sufficient fr most usecases,
+this package provides a simplemechanism for using custom objects for
+storing ratings.  Two storage factory implementations are included,
+both of which use the ZODB for storing ratings: one implementing the
+`IUserRating` interface and the other the `IEditorialRating`
+interface.  The former is intended to be used for any content which
+will be rated (or voted on) by multiple users.  The latter stores a
+single "editorial" rating on content, and exists primarily for
+backwards compatibility.
 
-There is only one anonymous rating, so it is the current value for anonymous::
+A custom sotrage factory (possibly sub-classed from one of the included
+implementations), can be specified using the `storage` attribute of
+the zcml directive, or `storage` parameter of the rating category factory.
 
-  >>> rating.userRating()
-  9.0
+Not only are the storages replaceable, they can implement completely
+custom APIs for managing ratings.  Though the need for this is is
+probably limited, you may create a custom storage API by making an
+interface for managing ratings, and having that interface provide
+`IRatingType`.  See the storage documentation in `tests/` for more
+information.
 
-Once we add more anonymous ratings the value becomes the average of the
-anonymous ratings::
 
-  >>> rating.rate(7)
-  >>> rating.userRating()
-  8.0
-  >>> rating.averageRating
-  7.0
-  >>> rating.numberOfRatings
-  4
+Why a New Rating Package
+========================
 
-This of course needs to be sticky as well::
+There are already the `ATRatings`, `lovely.rating`, `iqpp.rating`, and
+`iqpp.plone.rating` packages, why do we need another package?
 
-  >>> rating = IUserRating(my_container)
-  >>> rating.averageRating
-  7.0
-  >>> rating.numberOfRatings
-  4
+First, contentratings preceeds all of those except ATRatings, which is
+useful only under Plone with Archetypes content.  `contentratings` was
+originally a very simple package intended to make it easy for
+developers to add ratings to their products and applications.
+However, there appears to be much demand for an end-user product to
+facilitate adding ratings to existing content objects.
 
+Unfortunately, none of these packages offer direct support for
+multiple ratings on a single content object, which appears to be a
+common need.  It also (along with `lovely.rating`) decouples the
+rating scoring system from the view in a manner which is probably
+undesirable for a product which wants to allow user customization of
+ratings.  Changing these packages to support these use-cases would
+have required a complete rewrite.  As a result, I rewrote the simplest
+(and most familiar) of these rating packages to support these
+usecases, and also created a new package to integrate this new
+functionality for Plone end-users (see `plone.contentratings`).
 
 ToDo
 ====
 
+* Provide view customization examples
 * Make the views work with Zope 3 authentication
-* DHTML and AJAX-ify the views a bit
-* Make the cookie that prevents anonymous users from rerating the same content
-  long lived.
+* Port the KSS view from plone.contentratings into contentratings (it
+  currently depends on some plone KSS commands)
 
 
 Credits
@@ -295,10 +391,18 @@ Author:
 
 * **Alec Mitchell** <apm13@columbia.edu>
 
+
+Contributors:
+-------------
+
+* **Maurizio Delmonte**
+
+(feel free to add your name above if you have made significant contributions)
+
 Thanks To:
 ----------
 
-* **Geoff Davis** author of ATRatings from which icons and ideas were
+* **Geoff Davis** author of `ATRatings` from which icons and ideas were
   stolen.
 
 * **Philipp von Weitershausen** author of
@@ -306,4 +410,13 @@ Thanks To:
   of an annotation based rating product, which was the starting point for
   this implementation.
 
+* **Kai Diefenbach** author of `iqpp.plone.rating` from which other icons
+  and UI ideas were stolen.
+
+* Some icons are from **Mark James'** `Silk icon set 1.3`_
+
+* The star rating is based on `CSS Star Rating Redux`_ via `iqpp.plone.rating`
+
 .. _`Web Component Development with Zope 3`: http://www.worldcookery.com/
+.. _`Silk icon set 1.3`: http://www.famfamfam.com/lab/icons/silk/
+.. _`CSS Star Rating Redux`: http://komodomedia.com/blog/index.php/2007/01/20/css-star-rating-redux/

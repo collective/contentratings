@@ -5,7 +5,7 @@ UserRate = "Content Ratings: User Rate"
 ViewUserRating = "Content Ratings: View User Rating"
 
 try:
-    # From CMFCore.permissions
+    # Set some default roles for zope2
     import Products
     from AccessControl.Permission import _registeredPermissions
     from AccessControl.Permission import pname

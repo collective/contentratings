@@ -1,18 +1,21 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: contentratings\n"
 "POT-Creation-Date: 2008-05-07 18:33+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2008-05-07 20:36+0100\n"
+"Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
+"Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: cs\n"
+"Language-Name: Czech\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: contentratings\n"
 
 #: ./interfaces.py:172
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
@@ -24,31 +27,31 @@ msgstr ""
 
 #: ./browser/base_vocabs.py:16
 msgid "Acceptable"
-msgstr ""
+msgstr "Přijatelné"
 
 #: ./interfaces.py:132
 msgid "Category Id"
-msgstr ""
+msgstr "Identifikátor kategorie"
 
 #: ./interfaces.py:147
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: ./bbb.py:16
 msgid "Editor Rating"
-msgstr ""
+msgstr "Redakční hodnocení"
 
 #: ./browser/base_vocabs.py:13
 msgid "Excellent"
-msgstr ""
+msgstr "Vynikající"
 
 #: ./browser/base_vocabs.py:10
 msgid "Fair"
-msgstr ""
+msgstr "Dostatečné"
 
 #: ./browser/base_vocabs.py:11
 msgid "Good"
-msgstr ""
+msgstr "Dobré"
 
 #. Default: "No rating set"
 #: ./browser/stars.pt:51
@@ -57,11 +60,11 @@ msgstr ""
 
 #: ./interfaces.py:178
 msgid "Order"
-msgstr ""
+msgstr "Pořadí"
 
 #: ./browser/base_vocabs.py:9
 msgid "Poor"
-msgstr ""
+msgstr "Nedostatečné"
 
 #: ./interfaces.py:59
 msgid "Rating"
@@ -134,7 +137,7 @@ msgstr ""
 
 #: ./browser/base_vocabs.py:15
 msgid "Unacceptable"
-msgstr ""
+msgstr "Neakceptovatelné"
 
 #: ./interfaces.py:133
 msgid "Unique Id for this rating category"
@@ -150,7 +153,7 @@ msgstr ""
 
 #: ./browser/base_vocabs.py:12
 msgid "Very Good"
-msgstr ""
+msgstr "Velmi dobré"
 
 #: ./interfaces.py:157
 msgid "View"
@@ -175,57 +178,57 @@ msgstr ""
 #. Default: "Click to change the editor rating:"
 #: ./browser/bbb/editor_rating_edit.pt:11
 msgid "click_to_change_editor_rating"
-msgstr ""
+msgstr "Klepnutím určíte redakční hodnocení:"
 
 #. Default: "Click to change your rating:"
 #: ./browser/bbb/user_rating_edit.pt:12
 msgid "click_to_change_rating"
-msgstr ""
+msgstr "Klepnutím určíte své hodnocení:"
 
 #. Default: "Average Rating:"
 #: ./browser/bbb/user_rating.pt:7
 msgid "label_avg_rating"
-msgstr ""
+msgstr "Průměrné hodnocení"
 
 #. Default: "Editorial Rating:"
 #: ./browser/bbb/editor_rating.pt:8
 msgid "label_editorial_rating"
-msgstr ""
+msgstr "Hodnocení redakce:"
 
 #. Default: "(not rated)"
 #: ./browser/bbb/editor_rating_edit.pt:12
 msgid "not_rated"
-msgstr ""
+msgstr "(nehodnoceno)"
 
 #. Default: "${raters} votes"
 #: ./browser/bbb/user_rating.pt:12
 msgid "number-of-raters"
-msgstr ""
+msgstr "hlasů: ${raters} "
 
 #. Default: "worthless"
 #: ./browser/bbb/user_rating_edit.pt:26
 msgid "rating_1"
-msgstr ""
+msgstr "k ničemu"
 
 #. Default: "bad"
 #: ./browser/bbb/user_rating_edit.pt:28
 msgid "rating_2"
-msgstr ""
+msgstr "špatné"
 
 #. Default: "average"
 #: ./browser/bbb/user_rating_edit.pt:30
 msgid "rating_3"
-msgstr ""
+msgstr "průměrné"
 
 #. Default: "good"
 #: ./browser/bbb/user_rating_edit.pt:32
 msgid "rating_4"
-msgstr ""
+msgstr "dobré"
 
 #. Default: "great"
 #: ./browser/bbb/user_rating_edit.pt:34
 msgid "rating_5"
-msgstr ""
+msgstr "výborné"
 
 #. Default: "(${count} votes)"
 #: ./browser/stars.pt:20

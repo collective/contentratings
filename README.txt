@@ -1,1 +1,4 @@
-A small Zope 3 package (which works best with Zope 2 and Five) that allows you to easily attach ratings to content.
+This package provides an infrastructure for adding ratings to Zope
+content.  It supports multiple categorized ratings per content object
+and includes views for displaying those ratings.  For Plone rating
+support, please see `plone.contentratings`.

@@ -1,51 +1,96 @@
 <configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:zope="http://namespaces.zope.org/zope"
            i18n_domain="contentratings">
 
+  <!-- Aggregate views -->
   <page
-  	  name="editorial_rating_view"
-      for="contentratings.interfaces.IEditorRatable"
-      class=".EditorialRatingView"
-      template="editor_rating.pt"
-      permission="contentratings.ViewEditorialRating"
-      allowed_interface=".interfaces.IEditorialRatingView"
+      name="user-ratings"
+      for="*"
+      class=".aggregator.UserRatingAggregatorView"
+      permission="zope.Public"
+      />
+  <page
+      name="editorial-ratings"
+      for="*"
+      class=".aggregator.EditorialRatingAggregatorView"
+      permission="zope.Public"
       />
 
-  <page
-  	  name="editorial_rating_set"
-      for="contentratings.interfaces.IEditorRatable"
-      class=".EditorialRatingSetView"
-      template="editor_rating_edit.pt"
-      permission="contentratings.EditorRate"
-      allowed_attributes="rate"
+  <!-- Browser Resources -->
+  <resourceDirectory
+  	  name="contentratings"
+      directory="resources"
       />
 
+  <!-- Star Rating Views -->
   <page
-  	  name="user_rating_view"
-      for="contentratings.interfaces.IUserRatable"
-      class=".UserRatingView"
-      template="user_rating.pt"
-      permission="contentratings.ViewUserRating"
+      for="..interfaces.IUserRating"
+      name="ratings_view"
+      class=".basic.BasicUserRatingView"
+      template="stars.pt"
+      permission="zope.Public"
+      allowed_attributes="rate remove_rating"
+      />
+  <page
+      for="..interfaces.IEditorialRating"
+      name="ratings_view"
+      class=".basic.BasicEditorialRatingView"
+      template="editor_stars.pt"
+      permission="zope.Public"
+      allowed_attributes="rate remove_rating"
+      />
+  
+  <!-- Some Simple Variations -->
+  <page
+      for="..interfaces.IUserRating"
+      name="small_stars"
+      class=".basic.SmallStarUserRating"
+      template="stars.pt"
+      permission="zope.Public"
+      allowed_attributes="rate remove_rating"
+      />
+  <page
+      for="..interfaces.IUserRating"
+      name="three_small_stars"
+      class=".basic.ThreeStarUserRating"
+      template="stars.pt"
+      permission="zope.Public"
+      allowed_attributes="rate remove_rating"
       />
 
-  <page
-  	  name="user_rating_set"
-      for="contentratings.interfaces.IUserRatable"
-      class=".UserRatingSetView"
-      template="user_rating_edit.pt"
-      permission="contentratings.UserRate"
-      allowed_attributes="rate"
+  <!-- The vocabularies used by our views -->
+  <zope:utility
+      name="contentratings.browser.base_vocabs.five_star_vocab"
+      component=".base_vocabs.five_star_vocab"
+      />
+  <zope:utility
+      name="contentratings.browser.base_vocabs.three_star_vocab"
+      component=".base_vocabs.three_star_vocab"
       />
 
-  <resource
-  	  name="blank_star_icon.gif"
-  	  image="small_gray_star.gif"
-  	  permission="zope2.Public"
-  	  />
+  <!-- The Anonymous Session Utility -->
+  <zope:utility
+      factory=".utils.AnonSessionUtil"
+      provides=".interfaces.IAnonymousSession"
+      />
 
-  <resource
-  	  name="star_icon.gif"
-  	  image="small_yellow_star.gif"
-  	  permission="zope2.Public"
-  	  />
+  <!-- Traversal Handlers -->
+  <zope:view
+      name="UserRating"
+      type="zope.interface.Interface"
+      provides="zope.traversing.interfaces.ITraversable"
+      for="*"
+      factory=".traverser.user_rating"
+      />
+  <zope:view
+      name="EditorialRating"
+      type="zope.interface.Interface"
+      provides="zope.traversing.interfaces.ITraversable"
+      for="*"
+      factory=".traverser.editorial_rating"
+      />
+
+  <!-- BBB stuff to go away in version 1.1 -->
+  <include package=".bbb" />
 
 </configure>
