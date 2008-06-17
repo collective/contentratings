@@ -6,25 +6,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-06-17 09:45+0000\n"
-"PO-Revision-Date: 2008-06-17 15:12+0200\n"
+"PO-Revision-Date: 2008-06-17 15:31+0200\n"
 "Last-Translator: Jarno de Wit <Jarno.de.Wit@pareto.nl>\n"
 "Language-Team: Plone Nederlands <plone-nl@lists.plone.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Language-Code: nl\n"
-"Language-Name: Nederlands\n"
-"Preferred-Encodings: utf-8 latin1\n"
-"X-Is-Fallback-For: nl-be nl-nl\n"
+"Plural-Forms: nplurals=2; plural=n != 1;"
 
 #: ./interfaces.py:172
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
-msgstr ""
+msgstr "Een TALES expressie om te bepalen of waarderingen mogen worden gegeven. Laat leeg om altijd toe te staan."
 
 #: ./interfaces.py:165
+#, fuzzy
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
-msgstr ""
+msgstr "Een TALES expressie om te bepalen of een waardering mag worden bekeken. Laat leeg om altijd toe te staan."
 
 #: ./browser/base_vocabs.py:16
 msgid "Acceptable"
@@ -72,8 +69,9 @@ msgid "Rating"
 msgstr "Waardering"
 
 #: ./interfaces.py:164
+#, fuzzy
 msgid "Read Expression"
-msgstr ""
+msgstr "Lees expressie"
 
 #. Default: "Remove my rating"
 #: ./browser/stars.pt:42
