@@ -136,7 +136,11 @@ class UserRatingSetView(object):
         if key:
             return key
         key = []
-        subloc = ISublocations(self.context.__parent__, alternative=None)
+        if not hasattr(self.context, '__parent__'):
+            subloc = None
+        else:
+            subloc = ISublocations(self.context.__parent__, alternative=None)
+
         if subloc is not None:
             for s in subloc.sublocations():
                 key.append(s.__name__)
