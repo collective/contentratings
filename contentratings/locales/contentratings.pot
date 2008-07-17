@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-05-07 18:33+0000\n"
+"POT-Creation-Date: 2008-07-17 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,7 +196,7 @@ msgid "label_editorial_rating"
 msgstr ""
 
 #. Default: "(not rated)"
-#: ./browser/bbb/editor_rating_edit.pt:12
+#: ./browser/bbb/user_rating_edit.pt:13
 msgid "not_rated"
 msgstr ""
 
@@ -237,5 +237,10 @@ msgstr ""
 
 #: ./browser/stars.pt:33
 msgid "vote_count"
+msgstr ""
+
+#. Default: "Your Rating:"
+#: ./browser/stars.pt:39
+msgid "your_rating"
 msgstr ""
 

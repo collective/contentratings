@@ -36,7 +36,7 @@
 </div>
 <div class="UserRating"
      tal:condition="view/can_rate">
-  <label>
+  <label i18n:translate="your_rating">
     Your Rating:
   </label>
   <a class="DeleteRating"
