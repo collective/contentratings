@@ -242,5 +242,5 @@ msgstr ""
 #. Default: "Your Rating:"
 #: ./browser/stars.pt:39
 msgid "your_rating"
-msgstr "Uw waardering"
+msgstr "Uw waardering:"
 
