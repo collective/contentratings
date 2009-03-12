@@ -63,7 +63,8 @@ class BasicEditorialRatingView(object):
         desired.  Use the content url if the url is not specified.
         """
         if redirect:
-            redirect = redirect == True and self.content_url or redirect
+            url = self.request.get('HTTP_REFERER', self.content_url)
+            redirect = redirect == True and url or redirect
             if msg:
                 self._setMessage(msg)
             self.request.response.redirect(redirect)
