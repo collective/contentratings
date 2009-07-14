@@ -81,8 +81,8 @@ class RatingsCategoryFactory(Persistent):
         if not self.write_expr:
             return None
         if not hasattr(self, '_v_write'):
-            self._v_read = Engine.compile(self.write_expr)
-            return self._v_read
+            self._v_write = Engine.compile(self.write_expr)
+        return self._v_write
 
     def __call__(self, context):
         """Returns the rating manager for self, context, or None if
