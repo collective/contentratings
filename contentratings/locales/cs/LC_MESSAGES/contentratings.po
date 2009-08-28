@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: contentratings\n"
 "POT-Creation-Date: 2008-05-07 18:33+0000\n"
-"PO-Revision-Date: 2009-08-27 14:49+0100\n"
+"PO-Revision-Date: 2009-08-27 17:54+0100\n"
 "Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
 "Language-Team: Czech <info@dms4u.cz>\n"
 "MIME-Version: 1.0\n"
@@ -230,9 +230,9 @@ msgstr "výborné"
 #. Default: "(${count} votes)"
 #: ./browser/stars.pt:20
 msgid "user_vote_count"
-msgstr "\"(${count} hodnocení)\""
+msgstr "(${count})"
 
 #: ./browser/stars.pt:33
 msgid "vote_count"
-msgstr "Počet hodnocení"
+msgstr ""
 
