@@ -186,7 +186,7 @@ class IRatingCategoryInfo(Interface):
 class IRatingCategory(IRatingCategoryInfo):
     """Defines the additional attributes of a RatingCategory implementation"""
     __name__ = Attribute(u"An alias for name")
-    storage = Attribute(u"A factory fr generating persistable rating storages")
+    storage = Attribute(u"A factory for generating persistable rating storages")
     read = Attribute(u"The compiled expression which is used to determine "
                      u"if viewing the rating is allowed")
     write = Attribute(u"The compiled expression which is used to determine "
