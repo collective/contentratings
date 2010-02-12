@@ -4,7 +4,9 @@ from zope.traversing.interfaces import ITraversable
 from Acquisition import ExplicitAcquisitionWrapper
 from contentratings.interfaces import IUserRating, IEditorialRating
 
-class user_rating(object):
+from Acquisition import Explicit 
+
+class user_rating(Explicit, object):
     """Traversal adapter to lookup the view for a named IUserRating category.
     To demonstrate we need to make some categories and a view for those.
     First we make two categories::
@@ -55,7 +57,7 @@ class user_rating(object):
         >>> traverser.traverse('bogus', ()) # doctest: +ELLIPSIS
         Traceback (most recent call last):
         ...
-        ComponentLookupError: (<zope.app.container.sample.SampleContainer object at ...>, <InterfaceClass contentratings.interfaces.IUserRating>, 'bogus')
+        ComponentLookupError: (<zope...container.sample.SampleContainer object at ...>, <InterfaceClass contentratings.interfaces.IUserRating>, 'bogus')
 
     """
     implements(ITraversable)

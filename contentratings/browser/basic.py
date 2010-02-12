@@ -6,6 +6,9 @@ from contentratings.browser.interfaces import IAnonymousSession
 from contentratings.browser.interfaces import IRatingView
 from contentratings.interfaces import _
 from zope.schema.interfaces import IVocabularyTokenized
+
+from Acquisition import Explicit 
+
 try:
     from Products.statusmessages.interfaces import IStatusMessage
 except ImportError:
@@ -13,7 +16,7 @@ except ImportError:
     class IStatusMessage(Interface):
         pass
 
-class BasicEditorialRatingView(object):
+class BasicEditorialRatingView(Explicit, object):
     """A basic view for applying and removing user ratings.  Expects
     its context to be an IRatingManager providing IEditorialRating."""
     vocab_name = 'contentratings.browser.base_vocabs.five_star_vocab'

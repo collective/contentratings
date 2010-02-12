@@ -27,7 +27,7 @@ class AnonSessionUtil(object):
     This should also have set a cookie::
 
         >>> req.response.getHeaders() # doctest: +ELLIPSIS
-        [('X-Powered-By', 'Zope (www.zope.org), Python (www.python.org)'), ('Set-Cookie', 'contentratings=...; expires=Mon, 31 Dec 2035 23:00:01 GMT;')]
+        [('X-Powered-By', 'Zope (www.zope.org), Python (www.python.org)'), ('Set-Cookie', 'contentratings=...; expires=Mon, 31 Dec 2035 23:00:01 GMT...')]
 
     """
 

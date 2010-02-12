@@ -261,7 +261,7 @@ content object.
     >>> adapted.category # doctest: +ELLIPSIS
     <contentratings.category.RatingsCategoryFactory ...>
     >>> adapted.context # doctest: +ELLIPSIS
-    <zope.app.container.sample.SampleContainer ...>
+    <zope...container.sample.SampleContainer ...>
     >>> adapted.storage # doctest: +ELLIPSIS
     <contentratings.storage.UserRatingStorage ...>
     >>> isinstance(adapted.storage, adapted.category.storage)
