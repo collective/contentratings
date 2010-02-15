@@ -4,17 +4,17 @@ Changelog
 0.3 (unreleased)
 ----------------
 
-* Plone 4 / Zope 2.12 compatibility:
-    * permissions.py:21,22
-        * Don't depend on Products.__ac_permissions__
-    * browser/basic.py:19, browser/traverser.py:19 
-        * Subclass views from Explicit
+* Plone 4 / Zope 2.12 compatibility (still works on Plone 3.3.4 / Zope 2.10.11):
+    * permissions.py: Don't depend on Products.__ac_permissions__
     * Import ApplicationDefaultPermissions from AccessControl.Permission
     * Fix tests:
-        * traverser.py:60, README.txt:263 
-            * SampleContainer class may come from zope.* and zope.app.*
-        * utils.py:30
-            * Date may or may not be followed by semicolon
+        * traverser.py, README.txt: SampleContainer class may come 
+          from zope.* and zope.app.*
+        * utils.py: Date may or may not be followed by semicolon
+    * browser/basic.py: add publishTraverse method to BasicEditorialRatingView,
+      to prevent faulty traversal.
+    * events.py and interfaces.py: Subclass IObjectRatedEvent from IObjectEvent
+      (instead of from IObjectModifiedEvent) to prevent permissions errors.
 * Added this file
 
 0.2 (2009-05-11)

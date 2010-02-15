@@ -10,7 +10,8 @@ from zope.schema import Datetime
 from zope.schema import Text
 from zope.schema import TextLine
 from zope.i18nmessageid import MessageFactory
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.component.interfaces import IObjectEvent
+
 _ = MessageFactory('contentratings')
 
 class IEditorRatable(IAnnotatable):
@@ -110,7 +111,7 @@ class IUserRating(Interface):
 directlyProvides(IUserRating, IRatingType)
 
 
-class IObjectRatedEvent(IObjectModifiedEvent):
+class IObjectRatedEvent(IObjectEvent):
     """An event that is emitted when an object is rated by a user"""
     rating = Attribute("The IRating set on the object")
     category = Attribute("The category in which this rating was set")

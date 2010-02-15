@@ -6,8 +6,7 @@ from contentratings.browser.interfaces import IAnonymousSession
 from contentratings.browser.interfaces import IRatingView
 from contentratings.interfaces import _
 from zope.schema.interfaces import IVocabularyTokenized
-
-from Acquisition import Explicit 
+from ZPublisher.BaseRequest import DefaultPublishTraverse
 
 try:
     from Products.statusmessages.interfaces import IStatusMessage
@@ -16,12 +15,22 @@ except ImportError:
     class IStatusMessage(Interface):
         pass
 
-class BasicEditorialRatingView(Explicit, object):
+class BasicEditorialRatingView(object):
     """A basic view for applying and removing user ratings.  Expects
     its context to be an IRatingManager providing IEditorialRating."""
     vocab_name = 'contentratings.browser.base_vocabs.five_star_vocab'
     traversal_name = 'EditorialRating'
     implements(IRatingView)
+
+    # TODO There should be a better way to do this.
+    def publishTraverse(self, request, name):
+        """
+        Make sure we don't end up in
+        Products.Five.browser.metaconfigure.ViewMixinForTemplates's
+        publishTraverse.
+        """
+        adapter = DefaultPublishTraverse(self, request)
+        return adapter.publishTraverse(request,name)
 
     def __init__(self, context, request):
         """We implement this to make the tests happy"""

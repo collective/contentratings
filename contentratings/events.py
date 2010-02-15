@@ -1,17 +1,19 @@
 from Acquisition import aq_base
 from zope.interface import implements
-from zope.lifecycleevent import ObjectModifiedEvent
+#from zope.lifecycleevent import ObjectModifiedEvent
+from zope.lifecycleevent import ObjectEvent
 from zope.deferredimport import deprecated
 from zope.deprecation.deprecation import DeprecatedMethod
 from contentratings.interfaces import IObjectRatedEvent
 from contentratings.interfaces import IObjectUserRatedEvent
 from contentratings.interfaces import IObjectEditorRatedEvent
 
-class ObjectRatedEvent(ObjectModifiedEvent):
+class ObjectRatedEvent(ObjectEvent):
     """An event that will be used to trigger necessary actions on rating
        changes"""
     implements(IObjectRatedEvent)
     def __init__(self, object, rating, category=''):
+        self.descriptions = () # for some reason KSS wants us to have this..
         self.rating = rating
         self.category = category
         super(ObjectRatedEvent, self).__init__(object)
