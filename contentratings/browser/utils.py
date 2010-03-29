@@ -56,6 +56,7 @@ class AnonSessionUtil(object):
             request.response.setCookie(
                 "contentratings",
                 sid,
-                expires="Mon, 31 Dec 2035 23:00:01 GMT")
+                expires="Mon, 31 Dec 2035 23:00:01 GMT",
+                path='/')
 
         return sid
