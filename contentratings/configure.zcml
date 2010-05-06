@@ -50,6 +50,12 @@
       handler=".events.reindexOnRate"
       />
 
+  <subscriber
+    for="zope.interface.Interface
+         .interfaces.IObjectRatedEvent"
+    handler=".events.reindexOnRate"
+    />
+
   <include package=".browser" />
 
   <!-- Register our marker interfaces -->
