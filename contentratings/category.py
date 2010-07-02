@@ -142,6 +142,8 @@ class RatingCategoryAdapter(object):
         annotations = IAnnotations(context)
         try:
             storage = annotations[key]
+            if storage is None:
+                storage = annotations[key] = category.storage()
         except KeyError:
             storage = annotations[key] = category.storage()
             # set containment for the ratings storage
