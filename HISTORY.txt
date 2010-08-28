@@ -1,8 +1,10 @@
 Changelog
 =========
 
-0.3 (unreleased)
+1.0 (unreleased)
 ----------------
+
+* Remove _v attribute caching.
 
 * Plone 4 / Zope 2.12 compatibility (still works on Plone 3.3.4 / Zope 2.10.11):
     * permissions.py: Don't depend on Products.__ac_permissions__

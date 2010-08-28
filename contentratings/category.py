@@ -1,12 +1,11 @@
 from persistent import Persistent
 from zope.interface import implements, Interface, alsoProvides
 from zope.component import adapts, queryMultiAdapter, getMultiAdapter
-from zope.annotation.interfaces import IAnnotations, IAnnotatable
+from zope.annotation.interfaces import IAnnotations
 from zope.app.interface import queryType
 from zope.app.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
-from BTrees.OOBTree import OOBTree
 try:
     from Acquisition import aq_base
 except ImportError:
@@ -16,28 +15,12 @@ from contentratings.interfaces import (
     IRatingType,
     IRatingCategory,
     IRatingManager,
-    IRatingStorage,
     IRatingStorageMigrator,
-    _,
     )
 from contentratings.events import ObjectRatedEvent
 from contentratings.storage import UserRatingStorage
 
 BASE_KEY = 'contentratings.userrating'
-
-def expression_property(name):
-    """A closure for creating properties which invalidate an _v_cache
-    when changed.  Used to ensure that the complied version is
-    up-to-date."""
-    def _get(self):
-        return getattr(self, '_expr_' + name)
-    def _set(self, val):
-        setattr(self, '_expr_' + name, val)
-        # Remove the cache if it exists
-        cache_name = '_v_' + name
-        if hasattr(self, cache_name):
-            delattr(self, cache_name)
-    return property(_get, _set)
 
 class RatingsCategoryFactory(Persistent):
     """Contains all settings for a rating category"""
@@ -64,25 +47,17 @@ class RatingsCategoryFactory(Persistent):
         # Use Zope 3 convention
         return self.name
 
-    # expressions which invalidate cache on set
-    read_expr = expression_property('read')
-    write_expr = expression_property('write')
-
-    # Read-only properties containing a cached compiled TALES expression
     @property
     def read(self):
         if not self.read_expr:
             return None
-        if not hasattr(self, '_v_read'):
-            self._v_read = Engine.compile(self.read_expr)
-        return self._v_read
+        return Engine.compile(self.read_expr)
+
     @property
     def write(self):
         if not self.write_expr:
             return None
-        if not hasattr(self, '_v_write'):
-            self._v_write = Engine.compile(self.write_expr)
-        return self._v_write
+        return Engine.compile(self.write_expr)
 
     def __call__(self, context):
         """Returns the rating manager for self, context, or None if
