@@ -1,6 +1,12 @@
 from zope.component import getAdapters, getMultiAdapter, queryMultiAdapter
 from contentratings.interfaces import IUserRating, IEditorialRating
 
+def get_rating_categories(context, interface):
+    """Finds all named rating categories for the object matching
+    the classes RATING_IFACE, and returns them in order"""
+    adapters = getAdapters((context,), interface)
+    return sorted((a for n, a in adapters), key=lambda x: x.order)
+
 class UserRatingAggregatorView(object):
     """View which combines the views of each IUserRating category for a given
     context"""
@@ -11,19 +17,13 @@ class UserRatingAggregatorView(object):
         self.context = context
         self.request = request
 
-    def _get_categories(self):
-        """Finds all named rating categories for the object matching
-        the classes RATING_IFACE, and returns them in order"""
-        adapters = getAdapters((self.context,), self.RATING_IFACE)
-        return sorted((a for n, a in adapters), key=lambda x: x.order)
-
     def _get_view(self, manager):
         return getMultiAdapter((manager, self.request), name=manager.view_name)
 
     def __call__(self):
         """Returns a simple div containing all of the ordered rating category
         views"""
-        categories = self._get_categories()
+        categories = get_rating_categories(self.context, self.RATING_IFACE)
         # Get the views for each manager if they exist and are not empty
         rendered = list(c for c in (v() for v in
                                    (self._get_view(m) for m in categories) if v)
