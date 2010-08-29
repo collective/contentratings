@@ -15,6 +15,18 @@
       class=".aggregator.EditorialRatingAggregatorView"
       permission="zope.Public"
       />
+  <page
+      name="user-ratings-read"
+      for="*"
+      class=".aggregator.UserRatingAggregatorReadView"
+      permission="zope.Public"
+      />
+  <page
+      name="editorial-ratings-read"
+      for="*"
+      class=".aggregator.EditorialRatingAggregatorReadView"
+      permission="zope.Public"
+      />
 
   <!-- Browser Resources -->
   <resourceDirectory
@@ -23,40 +35,56 @@
       />
 
   <!-- Star Rating Views -->
-  <page
+  <pages
       for="..interfaces.IUserRating"
-      name="ratings_view"
       class=".basic.BasicUserRatingView"
-      template="stars.pt"
       permission="zope.Public"
-      allowed_attributes="rate remove_rating"
-      />
-  <page
+      allowed_attributes="rate remove_rating">
+    <page
+        name="ratings_view"
+        template="stars.pt"/>
+    <page
+        name="ratings_view_read"
+        template="stars_view.pt" />
+  </pages>
+  <pages
       for="..interfaces.IEditorialRating"
-      name="ratings_view"
       class=".basic.BasicEditorialRatingView"
-      template="editor_stars.pt"
       permission="zope.Public"
-      allowed_attributes="rate remove_rating"
-      />
+      allowed_attributes="rate remove_rating">
+    <page
+        name="ratings_view"
+        template="editor_stars.pt" />
+    <page
+        name="ratings_view_read"
+        template="editor_stars_read.pt" />
+  </pages>
   
   <!-- Some Simple Variations -->
-  <page
+  <pages
       for="..interfaces.IUserRating"
-      name="small_stars"
       class=".basic.SmallStarUserRating"
-      template="stars.pt"
       permission="zope.Public"
-      allowed_attributes="rate remove_rating"
-      />
-  <page
+      allowed_attributes="rate remove_rating">
+    <page
+        name="small_stars"
+        template="stars.pt"/>
+    <page
+        name="small_stars_read"
+        template="stars_view.pt" />
+  </pages>
+  <pages
       for="..interfaces.IUserRating"
-      name="three_small_stars"
       class=".basic.ThreeStarUserRating"
-      template="stars.pt"
       permission="zope.Public"
-      allowed_attributes="rate remove_rating"
-      />
+      allowed_attributes="rate remove_rating">
+    <page
+        name="three_small_stars"
+        template="stars.pt"/>
+    <page
+        name="three_small_stars_read"
+        template="stars_view.pt" />
+  </pages>
 
   <!-- The vocabularies used by our views -->
   <zope:utility

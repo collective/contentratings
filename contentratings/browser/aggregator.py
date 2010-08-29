@@ -1,4 +1,4 @@
-from zope.component import getAdapters, getMultiAdapter
+from zope.component import getAdapters, getMultiAdapter, queryMultiAdapter
 from contentratings.interfaces import IUserRating, IEditorialRating
 
 class UserRatingAggregatorView(object):
@@ -24,16 +24,33 @@ class UserRatingAggregatorView(object):
         """Returns a simple div containing all of the ordered rating category
         views"""
         categories = self._get_categories()
-        rendered = list(v for v in (self._get_view(m)() for m in categories)
-                                                            if v.strip())
+        # Get the views for each manager if they exist and are not empty
+        rendered = list(c for c in (v() for v in
+                                   (self._get_view(m) for m in categories) if v)
+                        if c.strip())
         if not rendered:
             return u''
         return u'<div class="%s">%s</div>'%(self.CLASS_NAME,
                                             '\n'.join(rendered))
 
 
+class UserRatingAggregatorReadView(UserRatingAggregatorView):
+    """Aggregates the UserRating read views for available categories"""
+    def _get_view(self, manager):
+        """Read views are found via convention: view_name + '_read'"""
+        return queryMultiAdapter((manager, self.request),
+                                 name=manager.view_name+'_read')
+
+
 class EditorialRatingAggregatorView(UserRatingAggregatorView):
     """View which combines the views of each IEditorialRating category
+    for a given context"""
+    RATING_IFACE = IEditorialRating
+    CLASS_NAME = 'EditorialRatings'
+
+
+class EditorialRatingAggregatorReadView(UserRatingAggregatorReadView):
+    """View which combines the read views of each IEditorialRating category
     for a given context"""
     RATING_IFACE = IEditorialRating
     CLASS_NAME = 'EditorialRatings'

@@ -4,6 +4,8 @@ Changelog
 1.0 (unreleased)
 ----------------
 
+* Add support for view only rating views.
+
 * Remove _v attribute caching.
 
 * Plone 4 / Zope 2.12 compatibility (still works on Plone 3.3.4 / Zope 2.10.11):

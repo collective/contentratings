@@ -3,7 +3,7 @@
 <!-- We should use something like zc.resourcelibrary for this -->
 </tal:comment>
 <style type="text/css"><!-- @import url(/++resource++cr_star_rating.css); --></style>
-<div class="EditorRating"
+<div class="EditorRating Rating"
      i18n:domain="contentratings"
      tal:define="view_url string:${view/content_url}/++${view/traversal_name}++${context/name};
                  current context/rating;
@@ -12,12 +12,9 @@
                  count python:len(values);
                  base_width python:count*star_size;
                  cat_name python:context.name or '_default'"
-     tal:attributes="class python:'EditorRating' + (star_size &lt;= 15 and ' small-star' or '') + ' kssattr-category-' + cat_name;
+     tal:attributes="class python:'Rating EditorRating' + (star_size &lt;= 15 and ' small-star' or '') + ' kssattr-category-' + cat_name;
                      id string:editor-rating-stars-view-${cat_name};">
-  <label>
-    <span class="RatingTitle"
-          tal:content="context/title">Average rating</span>:
-  </label>
+  <label tal:content="string:${context/title}:">Editorial rating:</label>
   <ul class="star-rating"
       tal:attributes="style string:width:${base_width}px;">
     
