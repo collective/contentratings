@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0 (unreleased)
+1.0 (2010-08-31)
 ----------------
 
 * Add support for view only rating views.
@@ -19,6 +19,7 @@ Changelog
       to prevent faulty traversal.
     * events.py and interfaces.py: Subclass IObjectRatedEvent from IObjectEvent
       (instead of from IObjectModifiedEvent) to prevent permissions errors.
+
 * Added this file
 
 0.2 (2009-05-11)
