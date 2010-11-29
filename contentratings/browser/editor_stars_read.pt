@@ -7,8 +7,7 @@
                  count python:len(values);
                  base_width python:count*star_size;
                  cat_name python:context.name or '_default'"
-     tal:attributes="class python:'Rating EditorRating' + (star_size &lt;= 15 and ' small-star' or '');
-                     id string:editor-rating-stars-view-${cat_name};">
+     tal:attributes="class python:'Rating EditorRating' + (star_size &lt;= 15 and ' small-star' or '') + ' kssattr-category-' + cat_name;">
   <label>
     <span class="RatingTitle"
           tal:content="context/title">Average rating</span>:

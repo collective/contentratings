@@ -5,8 +5,7 @@
                  count python:len(values);
                  base_width python:count*star_size;
                  cat_name python:context.name or '_default'"
-     tal:attributes="class python:'Rating' + (star_size &lt;= 12 and ' small-star' or '') + ' kssattr-category-' + cat_name;
-                     id string:rating-stars-view-${cat_name};">
+     tal:attributes="class python:'Rating' + (star_size &lt;= 12 and ' small-star' or '') + ' kssattr-category-' + cat_name;">
 
 <div class="AverageRating"
      tal:condition="context/can_read">

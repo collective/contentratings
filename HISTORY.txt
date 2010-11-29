@@ -1,8 +1,15 @@
 Changelog
 =========
 
-1.0 (2010-08-31)
-----------------
+1.0-rc2 (2010-11-28)
+--------------------
+
+* Don't use a CSS id in view only rating view so that listings with
+  ratings can still have valid html.
+
+
+1.0-rc1 (2010-08-31)
+--------------------
 
 * Add support for view only rating views.
 
