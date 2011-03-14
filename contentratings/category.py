@@ -2,7 +2,10 @@ from persistent import Persistent
 from zope.interface import implements, Interface, alsoProvides
 from zope.component import adapts, queryMultiAdapter, getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
-from zope.app.interface import queryType
+try:
+    from zope.app.interface import queryType
+except ImportError:
+    from zope.app.content import queryType
 from zope.app.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
