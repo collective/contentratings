@@ -3,9 +3,10 @@ from zope.interface import implements, Interface, alsoProvides
 from zope.component import adapts, queryMultiAdapter, getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
 try:
-    from zope.app.interface import queryType
-except ImportError:
     from zope.app.content import queryType
+except ImportError:
+    # BBB Zope 2.12
+    from zope.app.interface import queryType
 from zope.app.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
