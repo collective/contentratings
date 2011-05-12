@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.0-rc3 (2011-05-12)
+--------------------
+
+* Optimize for average/count calculations with large numbers of
+  ratings.  Improve performance of most recent rating lookup.
+
+* Fixes for Plone 4.1
+
 1.0-rc2 (2010-11-28)
 --------------------
 

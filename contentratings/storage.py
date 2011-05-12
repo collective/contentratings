@@ -2,10 +2,10 @@ from datetime import datetime
 from itertools import chain
 from zope.interface import implements
 from zope.app.container.contained import Contained
-from zope.event import notify
 from persistent import Persistent
 from BTrees.OOBTree import OOBTree
 from BTrees.IOBTree import IOBTree
+from BTrees.Length import Length
 from contentratings.rating import Rating
 from contentratings.interfaces import (
     IEditorialRating,
@@ -22,6 +22,9 @@ class UserRatingStorage(Contained, Persistent):
     _average = 0.0
     _anon_average = 0.0
     _most_recent = None
+    _penultimate = None
+    _length = None
+    _anon_length = None
     # BBB
     scale = 5
 
@@ -30,6 +33,8 @@ class UserRatingStorage(Contained, Persistent):
         self._anon_ratings = IOBTree()
         self._ratings = OOBTree()
         self._sessions = OOBTree()
+        self._length = Length()
+        self._anon_length = Length()
 
     def rate(self, rating, username=None, session_key=None):
         """Set a rating for a particular user"""
@@ -40,12 +45,17 @@ class UserRatingStorage(Contained, Persistent):
         rating = Rating(rating, username)
         if username:
             self._ratings[username] = rating
+            if not orig_rating:
+                # If the user hadn't set a rating yet, the number of
+                # ratings grew
+                self._length.change(1)
         else:
             # For anonymous users, we use a sequential key, which
             # may lead to conflicts.  There's probably a better way
             anon_total = self._anon_average * self._anon_count
-            key = len(self._anon_ratings) + 1
-            self._anon_ratings[key] = rating
+            # Update the corresponding BTree length to get the key
+            self._anon_length.change(1)
+            self._anon_ratings[self._anon_count] = rating
             self._anon_average = (anon_total + rating)/self._anon_count
             # If a session key was passed in for an anonymous user
             # store it with a datestamp
@@ -53,8 +63,15 @@ class UserRatingStorage(Contained, Persistent):
                 self._sessions[session_key] = datetime.utcnow()
         # Calculate the updated average
         self._average = (orig_total + rating - orig_rating)/self.numberOfRatings
+
+        # If this isn't just a change in the last rating update the
+        # most recent rating
+        if self._most_recent and username != self._most_recent.userid:
+            self._penultimate = self._most_recent
+
         # Mark this new rating as the most recent
         self._most_recent = rating
+
         return rating
 
     def userRating(self, username=None):
@@ -73,23 +90,35 @@ class UserRatingStorage(Contained, Persistent):
         orig_total = self._average * self.numberOfRatings
         rating = self._ratings[username]
         del self._ratings[username]
+        self._length.change(-1)
         # Since we want to keep track of the most recent rating, we
         # need to replace it with the second most recent if the most
         # recent was deleted
         if rating is self.most_recent:
-            ordered = sorted(self.all_user_ratings(True),
-                             key=lambda x: x.timestamp)
-            if ordered:
-                self._most_recent = ordered[-1]
-            else:
-                self._most_recent = None
+            self._most_recent = self._penultimate
+            self._penultimate = None
+            if self._most_recent is None:
+                ordered = sorted(self.all_user_ratings(True),
+                                 key=lambda x: x.timestamp)
+                if ordered:
+                    self._most_recent = ordered[-1]
+                    if len(ordered > 1):
+                        self._penultimate = ordered[-2]
+                    else:
+                        self._penultimate = None
+                else:
+                    self._most_recent = None
+                    self._penultimate = None
         # Update the average
         self._average = float(self.numberOfRatings and
                                  (orig_total - rating)/self.numberOfRatings)
 
     @property
     def _anon_count(self):
-        return len(self._anon_ratings)
+        # Dynamic Migration
+        if self._anon_length is None:
+            self._anon_length = Length(len(self._anon_ratings))
+        return self._anon_length()
 
     @property
     def most_recent(self):
@@ -106,7 +135,10 @@ class UserRatingStorage(Contained, Persistent):
 
     @property
     def numberOfRatings(self):
-        return len(self._ratings) + self._anon_count
+        # Dynamic Migration
+        if self._length is None:
+            self._length = Length(len(self._ratings))
+        return self._length() + self._anon_count
 
     @property
     def averageRating(self):
