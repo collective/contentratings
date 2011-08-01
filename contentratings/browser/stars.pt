@@ -6,8 +6,9 @@
                  values view/vocabulary;
                  count python:len(values);
                  base_width python:count*star_size;
-                 cat_name python:context.name or '_default'"
-     tal:attributes="class python:'Rating' + (star_size &lt;= 12 and ' small-star' or '') + ' kssattr-category-' + cat_name;
+                 cat_name python:context.name or '_default';
+                 small_star python:star_size &lt;= 12 and ' small-star' or '';"
+     tal:attributes="class python:'Rating' + small_star + ' kssattr-category-' + cat_name;
                      id string:rating-stars-view-${cat_name};">
 
 <div class="AverageRating"
