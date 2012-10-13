@@ -7,13 +7,16 @@ try:
 except ImportError:
     # BBB Zope 2.12
     from zope.app.interface import queryType
-from zope.app.container.contained import contained
+try:
+    from zope.container.contained import contained
+except ImportError:
+    from zope.app.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
 try:
     from Acquisition import aq_base
 except ImportError:
-    # Do nothing
+    # Do nothing if this is not Zope2
     aq_base = lambda x: x
 from contentratings.interfaces import (
     IRatingType,

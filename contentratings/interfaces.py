@@ -1,13 +1,16 @@
 from zope.interface import Interface, Attribute, directlyProvides
 from zope.interface.interfaces import IInterface
 from zope.annotation.interfaces import IAnnotatable
-from zope.app.component.vocabulary import InterfacesVocabulary
+try:
+    from zope.componentvocabulary.vocabulary import InterfacesVocabulary
+except ImportError:
+    #Zope BBB
+    from zope.app.component.vocabulary import InterfacesVocabulary
 
 from zope.schema import Float
 from zope.schema import Int
 from zope.schema import ASCII
 from zope.schema import Datetime
-from zope.schema import Text
 from zope.schema import TextLine
 from zope.i18nmessageid import MessageFactory
 from zope.component.interfaces import IObjectEvent

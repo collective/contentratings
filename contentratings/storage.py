@@ -1,7 +1,11 @@
 from datetime import datetime
 from itertools import chain
 from zope.interface import implements
-from zope.app.container.contained import Contained
+try:
+    from zope.container.contained import Contained
+except ImportError:
+    # Zope BBB
+    from zope.app.container.contained import Contained
 from persistent import Persistent
 from BTrees.OOBTree import OOBTree
 from BTrees.IOBTree import IOBTree
