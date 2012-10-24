@@ -23,7 +23,7 @@ Now we need an empty instance of UserRatingStorage to migrate the data to::
     >>> from contentratings.migrations import UserRatingMigrator
     >>> migrator = UserRatingMigrator(orig_storage, new)
     >>> migrated = migrator.migrate()
-    >>> migrated.averageRating
+    >>> round(migrated.averageRating,1)
     7.0
     >>> migrated.numberOfRatings
     2
@@ -44,8 +44,8 @@ were stored individually.  We add three anonymous ratings::
     >>> new = UserRatingStorage()
     >>> migrator = UserRatingMigrator(orig_storage, new)
     >>> migrated = migrator.migrate()
-    >>> migrated.averageRating
-    7.5999999999999996
+    >>> round(migrated.averageRating, 1)
+    7.6
     >>> migrated.numberOfRatings
     5
     >>> ratings = list(migrated.all_user_ratings(True))

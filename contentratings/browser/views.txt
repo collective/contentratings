@@ -169,11 +169,11 @@ let's rate something::
 
     >>> view.rate(0)
     u'You have changed your rating'
-    >>> rating.averageRating
+    >>> round(rating.averageRating,1)
     0.0
     >>> view.rate(1)
     u'You have changed your rating'
-    >>> rating.averageRating
+    >>> round(rating.averageRating,1)
     0.5
 
 Oh no!  The anonymous user has rated the content twice.  This view
@@ -191,8 +191,8 @@ our session)::
 
     >>> view.rate(0)
     u'You have changed your rating'
-    >>> rating.averageRating
-    0.33333333333333331
+    >>> round(rating.averageRating,2)
+    0.33
     >>> view.rate(1)
     u'You have already rated this item, and cannot change your rating unless you log in.'
     >>> view.can_rate
