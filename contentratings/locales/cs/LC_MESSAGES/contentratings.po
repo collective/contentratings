@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: contentratings\n"
-"POT-Creation-Date: 2008-05-07 18:33+0000\n"
+"POT-Creation-Date: 2013-03-28 07:40+0000\n"
 "PO-Revision-Date: 2009-08-27 17:54+0100\n"
 "Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
 "Language-Team: Czech <info@dms4u.cz>\n"
@@ -14,225 +14,234 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: contentratings\n"
 
-#: ./interfaces.py:172
+#: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
 msgstr "TALES výraz, podle kterého bude hodnocení příslušné položky povoleno nebo zakázáno. Pokud ponecháte výraz prázdný, bude hodnocení povoleno."
 
-#: ./interfaces.py:165
+#: ./../interfaces.py:170
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
 msgstr "TALES výraz, podle kterého bude zobrazení aktuálního hodnocení příslušné položky povoleno nebo zakázáno. Pokud ponecháte výraz prázdný, bude hodnocení povoleno."
 
-#: ./browser/base_vocabs.py:16
+#: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
 msgstr "Přijatelné"
 
-#: ./interfaces.py:132
+#: ./../interfaces.py:136
 msgid "Category Id"
 msgstr "Identifikátor kategorie"
 
-#: ./interfaces.py:147
+#: ./../interfaces.py:151
 msgid "Description"
 msgstr "Popis"
 
-#: ./bbb.py:16
+#: ./../bbb.py:16
 msgid "Editor Rating"
 msgstr "Redakční hodnocení"
 
-#: ./browser/base_vocabs.py:13
+#: ./../browser/base_vocabs.py:13
 msgid "Excellent"
 msgstr "Vynikající"
 
-#: ./browser/base_vocabs.py:10
+#: ./../browser/base_vocabs.py:10
 msgid "Fair"
 msgstr "Dostatečné"
 
-#: ./browser/base_vocabs.py:11
+#: ./../browser/base_vocabs.py:11
 msgid "Good"
 msgstr "Dobré"
 
 #. Default: "No rating set"
-#: ./browser/stars.pt:51
+#: ./../browser/stars.pt
 msgid "No rating set"
 msgstr "Žádné hodnocení"
 
-#: ./interfaces.py:178
+#: ./../interfaces.py:182
 msgid "Order"
 msgstr "Pořadí"
 
-#: ./browser/base_vocabs.py:9
+#: ./../browser/base_vocabs.py:9
 msgid "Poor"
 msgstr "Nedostatečné"
 
-#: ./interfaces.py:59
+#: ./../interfaces.py:63
 msgid "Rating"
 msgstr "Hodnocení"
 
-#: ./interfaces.py:164
+#: ./../interfaces.py:168
 msgid "Read Expression"
 msgstr "Výraz pro zobrazení"
 
 #. Default: "Remove my rating"
-#: ./browser/stars.pt:42
+#: ./../browser/stars.pt
 msgid "Remove my rating"
 msgstr "Odebrat mé hodnocení"
 
-#: ./interfaces.py:158
+#: ./../interfaces.py:162
 msgid "Select the view for this category"
 msgstr "Vyberte vzhled kategorie"
 
-#: ./metadirectives.py:8
+#: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
 msgstr "Specifikace hodnocené položky"
 
-#: ./interfaces.py:44
+#: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
 msgstr ""
 
-#: ./interfaces.py:148
+#: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
 msgstr ""
 
-#: ./interfaces.py:141
+#: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
 msgstr ""
 
-#: ./metadirectives.py:13
+#: ./../metadirectives.py:13
 msgid "The dotted path to the storage factory"
 msgstr ""
 
-#: ./interfaces.py:37
+#: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
 msgstr ""
 
-#: ./browser/basic.py:50
+#: ./../browser/basic.py:62
 msgid "The rating has been changed"
 msgstr "Hodnocení bylo změněno"
 
-#: ./interfaces.py:60
+#: ./../interfaces.py:64
 msgid "The rating of the current object"
 msgstr "Hodnocení aktuální položky"
 
-#: ./interfaces.py:179
+#: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
 msgstr ""
 
-#: ./metadirectives.py:14
+#: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
 msgstr ""
 
-#: ./metadirectives.py:9
+#: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
 msgstr ""
 
-#: ./interfaces.py:43
+#: ./../interfaces.py:47
 msgid "Time Stamp"
 msgstr "Čas"
 
-#: ./interfaces.py:140
+#: ./../interfaces.py:144
 msgid "Title"
 msgstr "Nadpis"
 
-#: ./browser/base_vocabs.py:15
+#: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
 msgstr "Neakceptovatelné"
 
-#: ./interfaces.py:133
+#: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
 msgstr "Unikátní ID pro kategorii"
 
-#: ./interfaces.py:36
+#: ./../interfaces.py:40
 msgid "User Id"
 msgstr "ID uživatele"
 
-#: ./bbb.py:20
+#: ./../bbb.py:20
 msgid "User Rating"
 msgstr "Hodnocení uživatelů"
 
-#: ./browser/base_vocabs.py:12
+#: ./../browser/base_vocabs.py:12
 msgid "Very Good"
 msgstr "Velmi dobré"
 
-#: ./interfaces.py:157
+#: ./../interfaces.py:161
 msgid "View"
 msgstr "Zobrazení (view)"
 
-#: ./interfaces.py:171
+#: ./../interfaces.py:175
 msgid "Write Expression"
 msgstr "Výraz pro změnu hodnocení"
 
-#: ./browser/basic.py:120
+#: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
 msgstr "Tuto položku jste již hodnotil(a) a Vaše hodnocení nemůže být změněno pokud se nepřihlásíte."
 
-#: ./browser/basic.py:117
+#: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
 msgstr "Vaše hodnocení bylo změněno"
 
-#: ./browser/basic.py:136
+#: ./../browser/basic.py:149
 msgid "You have removed your rating"
 msgstr "Vaše hodnocení bylo odebráno"
 
 #. Default: "Click to change the editor rating:"
-#: ./browser/bbb/editor_rating_edit.pt:11
+#: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
 msgstr "Klepnutím určíte redakční hodnocení:"
 
 #. Default: "Click to change your rating:"
-#: ./browser/bbb/user_rating_edit.pt:12
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
 msgstr "Klepnutím určíte své hodnocení:"
 
 #. Default: "Average Rating:"
-#: ./browser/bbb/user_rating.pt:7
+#: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
 msgstr "Průměrné hodnocení"
 
 #. Default: "Editorial Rating:"
-#: ./browser/bbb/editor_rating.pt:8
+#: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
 msgstr "Hodnocení redakce:"
 
 #. Default: "(not rated)"
-#: ./browser/bbb/editor_rating_edit.pt:12
+#: ./../browser/bbb/editor_rating_edit.pt
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
 msgstr "(nehodnoceno)"
 
 #. Default: "${raters} votes"
-#: ./browser/bbb/user_rating.pt:12
+#: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
 msgstr "hlasů: ${raters} "
 
 #. Default: "worthless"
-#: ./browser/bbb/user_rating_edit.pt:26
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
 msgstr "k ničemu"
 
 #. Default: "bad"
-#: ./browser/bbb/user_rating_edit.pt:28
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
 msgstr "špatné"
 
 #. Default: "average"
-#: ./browser/bbb/user_rating_edit.pt:30
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
 msgstr "průměrné"
 
 #. Default: "good"
-#: ./browser/bbb/user_rating_edit.pt:32
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
 msgstr "dobré"
 
 #. Default: "great"
-#: ./browser/bbb/user_rating_edit.pt:34
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
 msgstr "výborné"
 
-#. Default: "(${count} votes)"
-#: ./browser/stars.pt:20
+#. Default: "( ${count} votes)"
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
+#, fuzzy
 msgid "user_vote_count"
 msgstr "(${count})"
 
-#: ./browser/stars.pt:33
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
 msgid "vote_count"
+msgstr ""
+
+#. Default: "Your Rating:"
+#: ./../browser/stars.pt
+msgid "your_rating"
 msgstr ""
 

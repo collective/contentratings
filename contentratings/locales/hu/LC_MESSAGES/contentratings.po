@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: see version.txt\n"
-"POT-Creation-Date: 2008-05-07 18:33+0000\n"
+"POT-Creation-Date: 2013-03-28 07:40+0000\n"
 "PO-Revision-Date: 2008-04-06 13:56+0200\n"
 "Last-Translator: Balazs Ree <ree@greenfinity.hu>\n"
 "Language-Team: none\n"
@@ -16,225 +16,234 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin2\n"
 "Domain: contentratings\n"
 
-#: ./interfaces.py:172
+#: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
 msgstr "Egy TALES kifejezés határozza meg, hogy a minősítés engedélyezett-e. Hagyja üresen, ha mindig engedélyezni akarja."
 
-#: ./interfaces.py:165
+#: ./../interfaces.py:170
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
 msgstr "Egy TALES kifejezés határozza meg, hogy a minősítés megtekintése engedélyezett-e. Hagyja üresen, ha mindig engedélyezni akarja."
 
-#: ./browser/base_vocabs.py:16
+#: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
 msgstr "Elégséges"
 
-#: ./interfaces.py:132
+#: ./../interfaces.py:136
 msgid "Category Id"
 msgstr "Kategória azonosító"
 
-#: ./interfaces.py:147
+#: ./../interfaces.py:151
 msgid "Description"
 msgstr "Leírás"
 
-#: ./bbb.py:16
+#: ./../bbb.py:16
 msgid "Editor Rating"
 msgstr "Szerkesztői minősítés"
 
-#: ./browser/base_vocabs.py:13
+#: ./../browser/base_vocabs.py:13
 msgid "Excellent"
 msgstr "Kitűnő"
 
-#: ./browser/base_vocabs.py:10
+#: ./../browser/base_vocabs.py:10
 msgid "Fair"
 msgstr "Elégséges"
 
-#: ./browser/base_vocabs.py:11
+#: ./../browser/base_vocabs.py:11
 msgid "Good"
 msgstr "Közepes"
 
 #. Default: "No rating set"
-#: ./browser/stars.pt:51
+#: ./../browser/stars.pt
 msgid "No rating set"
 msgstr "Nincs minősítve"
 
-#: ./interfaces.py:178
+#: ./../interfaces.py:182
 msgid "Order"
 msgstr "Sorrend"
 
-#: ./browser/base_vocabs.py:9
+#: ./../browser/base_vocabs.py:9
 msgid "Poor"
 msgstr "Elégtelen"
 
-#: ./interfaces.py:59
+#: ./../interfaces.py:63
 msgid "Rating"
 msgstr "Minősítés"
 
-#: ./interfaces.py:164
+#: ./../interfaces.py:168
 msgid "Read Expression"
 msgstr "Megtekinthetőségi kifejezés"
 
 #. Default: "Remove my rating"
-#: ./browser/stars.pt:42
+#: ./../browser/stars.pt
 msgid "Remove my rating"
 msgstr "Saját minősítés eltávolítása"
 
-#: ./interfaces.py:158
+#: ./../interfaces.py:162
 msgid "Select the view for this category"
 msgstr "Válassza ki a nézetet ehhez a kategóriához"
 
-#: ./metadirectives.py:8
+#: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
 msgstr "A minősítendő elem meghatározása"
 
-#: ./interfaces.py:44
+#: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
 msgstr "A minősítés dátuma és ideje (UTC)"
 
-#: ./interfaces.py:148
+#: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
 msgstr "A kategória leírása a felhasználó számára történő megjelenítéshez"
 
-#: ./interfaces.py:141
+#: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
 msgstr "A minősítési kategória megjelenítendő címe, lehetőleg röviden"
 
-#: ./metadirectives.py:13
+#: ./../metadirectives.py:13
 msgid "The dotted path to the storage factory"
 msgstr "A storage factory class teljes (pontozott) elérése"
 
-#: ./interfaces.py:37
+#: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
 msgstr "A minősítő felhasználó azonosítója"
 
-#: ./browser/basic.py:50
+#: ./../browser/basic.py:62
 msgid "The rating has been changed"
 msgstr "A minősítés megváltozott"
 
-#: ./interfaces.py:60
+#: ./../interfaces.py:64
 msgid "The rating of the current object"
 msgstr "Az aktuális objektum minősítése"
 
-#: ./interfaces.py:179
+#: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
 msgstr "A kategória megjelenítésének relatív sorrendje"
 
-#: ./metadirectives.py:14
+#: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
 msgstr "Ez a perzisztens osztály tárolja a minősítéseket."
 
-#: ./metadirectives.py:9
+#: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
 msgstr "Et egy interface vagy class legyen"
 
-#: ./interfaces.py:43
+#: ./../interfaces.py:47
 msgid "Time Stamp"
 msgstr "Időbélyeg"
 
-#: ./interfaces.py:140
+#: ./../interfaces.py:144
 msgid "Title"
 msgstr "Cím"
 
-#: ./browser/base_vocabs.py:15
+#: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
 msgstr "Elégtelen"
 
-#: ./interfaces.py:133
+#: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
 msgstr "A minősítési kategória egyedi azonosítója"
 
-#: ./interfaces.py:36
+#: ./../interfaces.py:40
 msgid "User Id"
 msgstr "Felhasználói azonosító"
 
-#: ./bbb.py:20
+#: ./../bbb.py:20
 msgid "User Rating"
 msgstr "Felhasználói minősítés"
 
-#: ./browser/base_vocabs.py:12
+#: ./../browser/base_vocabs.py:12
 msgid "Very Good"
 msgstr "Jó"
 
-#: ./interfaces.py:157
+#: ./../interfaces.py:161
 msgid "View"
 msgstr "Nézet"
 
-#: ./interfaces.py:171
+#: ./../interfaces.py:175
 msgid "Write Expression"
 msgstr "Módosíthatósági kifejezés"
 
-#: ./browser/basic.py:120
+#: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
 msgstr "Már minősítette ezt az elemet, és ezt csak bejelentkezés után változtathatja meg."
 
-#: ./browser/basic.py:117
+#: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
 msgstr "A minősítés módosítva"
 
-#: ./browser/basic.py:136
+#: ./../browser/basic.py:149
 msgid "You have removed your rating"
 msgstr "Eltávolította a minősítését"
 
 #. Default: "Click to change the editor rating:"
-#: ./browser/bbb/editor_rating_edit.pt:11
+#: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
 msgstr "Kattintson a szerkesztői minősítéshez:"
 
 #. Default: "Click to change your rating:"
-#: ./browser/bbb/user_rating_edit.pt:12
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
 msgstr "Kattintson a minősítéshez:"
 
 #. Default: "Average Rating:"
-#: ./browser/bbb/user_rating.pt:7
+#: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
 msgstr "Minősítések átlaga:"
 
 #. Default: "Editorial Rating:"
-#: ./browser/bbb/editor_rating.pt:8
+#: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
 msgstr "Szerkesztői minősítés:"
 
 #. Default: "(not rated)"
-#: ./browser/bbb/editor_rating_edit.pt:12
+#: ./../browser/bbb/editor_rating_edit.pt
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
 msgstr "(nincs minősítve)"
 
 #. Default: "${raters} votes"
-#: ./browser/bbb/user_rating.pt:12
+#: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
 msgstr "${raters} minősítés"
 
 #. Default: "worthless"
-#: ./browser/bbb/user_rating_edit.pt:26
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
 msgstr "elégtelen"
 
 #. Default: "bad"
-#: ./browser/bbb/user_rating_edit.pt:28
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
 msgstr "elégséges"
 
 #. Default: "average"
-#: ./browser/bbb/user_rating_edit.pt:30
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
 msgstr "közepes"
 
 #. Default: "good"
-#: ./browser/bbb/user_rating_edit.pt:32
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
 msgstr "jó"
 
 #. Default: "great"
-#: ./browser/bbb/user_rating_edit.pt:34
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
 msgstr "kitűnő"
 
-#. Default: "(${count} votes)"
-#: ./browser/stars.pt:20
+#. Default: "( ${count} votes)"
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
+#, fuzzy
 msgid "user_vote_count"
 msgstr "(${count} szavazat)"
 
-#: ./browser/stars.pt:33
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
 msgid "vote_count"
+msgstr ""
+
+#. Default: "Your Rating:"
+#: ./../browser/stars.pt
+msgid "your_rating"
 msgstr ""
 

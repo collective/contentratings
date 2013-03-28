@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: see version.txt\n"
-"POT-Creation-Date: 2008-07-17 12:09+0000\n"
+"POT-Creation-Date: 2013-03-28 07:40+0000\n"
 "PO-Revision-Date: 2008-08-30 22:55-0300\n"
 "Last-Translator: Érico Andrei <erico@simplesconsultoria.com.br>\n"
 "Language-Team: Simples Consultoria <contato@simplesconsultoria.com.br>\n"
@@ -15,230 +15,234 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: contentratings\n"
 
-#: ./interfaces.py:172
+#: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
 msgstr "Uma expressão TALES utilizada para determinar se é possível avaliar os conteúdo. Deixe em branco para permitir."
 
-#: ./interfaces.py:165
+#: ./../interfaces.py:170
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
 msgstr "Uma expressão TALES utilizada para determinar se é possível visualizar as avaliações dos conteúdo. Deixe em branco para permitir."
 
-#: ./browser/base_vocabs.py:16
+#: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
 msgstr "Aceitável"
 
-#: ./interfaces.py:132
+#: ./../interfaces.py:136
 msgid "Category Id"
 msgstr "Id da categoria"
 
-#: ./interfaces.py:147
+#: ./../interfaces.py:151
 msgid "Description"
 msgstr "Descrição"
 
-#: ./bbb.py:16
+#: ./../bbb.py:16
 msgid "Editor Rating"
 msgstr "Avaliação editorial"
 
-#: ./browser/base_vocabs.py:13
+#: ./../browser/base_vocabs.py:13
 msgid "Excellent"
 msgstr "Excelente"
 
-#: ./browser/base_vocabs.py:10
+#: ./../browser/base_vocabs.py:10
 msgid "Fair"
 msgstr "Fraco"
 
-#: ./browser/base_vocabs.py:11
+#: ./../browser/base_vocabs.py:11
 msgid "Good"
 msgstr "Bom"
 
 #. Default: "No rating set"
-#: ./browser/stars.pt:51
+#: ./../browser/stars.pt
 msgid "No rating set"
 msgstr "Nenhuma avaliação"
 
-#: ./interfaces.py:178
+#: ./../interfaces.py:182
 msgid "Order"
 msgstr "Ordenação"
 
-#: ./browser/base_vocabs.py:9
+#: ./../browser/base_vocabs.py:9
 msgid "Poor"
 msgstr "Ruim"
 
-#: ./interfaces.py:59
+#: ./../interfaces.py:63
 msgid "Rating"
 msgstr "Avaliação"
 
-#: ./interfaces.py:164
+#: ./../interfaces.py:168
 msgid "Read Expression"
 msgstr "Expressão de leitura"
 
 #. Default: "Remove my rating"
-#: ./browser/stars.pt:42
+#: ./../browser/stars.pt
 msgid "Remove my rating"
 msgstr "Remover minha avaliação"
 
-#: ./interfaces.py:158
+#: ./../interfaces.py:162
 msgid "Select the view for this category"
 msgstr "Selecione a visão para esta categoria"
 
-#: ./metadirectives.py:8
+#: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
 msgstr "Especificações do objeto a ser avaliado"
 
-#: ./interfaces.py:44
+#: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
 msgstr "Data e hora da avaliação (GMT)"
 
-#: ./interfaces.py:148
+#: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
 msgstr "A descrição da categoria para exibição na interface de usuário."
 
-#: ./interfaces.py:141
+#: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
 msgstr "O nome de exibição esta categoria, mantenha este nome curto"
 
-#: ./metadirectives.py:13
+#: ./../metadirectives.py:13
 msgid "The dotted path to the storage factory"
 msgstr "Caminho para o factory de armazenamento"
 
-#: ./interfaces.py:37
+#: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
 msgstr "Id do usuário que avaliou este objeto."
 
-#: ./browser/basic.py:50
+#: ./../browser/basic.py:62
 msgid "The rating has been changed"
 msgstr "A avaliação foi alterada"
 
-#: ./interfaces.py:60
+#: ./../interfaces.py:64
 msgid "The rating of the current object"
 msgstr "Avaliação do objeto atual"
 
-#: ./interfaces.py:179
+#: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
 msgstr "A ordem na qual esta categoria aparecerá"
 
-#: ./metadirectives.py:14
+#: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
 msgstr "Esta é a classe persistente utilizada para armazenamento das avaliações."
 
-#: ./metadirectives.py:9
+#: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
 msgstr "Deve ser uma interface ou uma classe."
 
-#: ./interfaces.py:43
+#: ./../interfaces.py:47
 msgid "Time Stamp"
 msgstr "Time Stamp"
 
-#: ./interfaces.py:140
+#: ./../interfaces.py:144
 msgid "Title"
 msgstr "Título"
 
-#: ./browser/base_vocabs.py:15
+#: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
 msgstr "Inaceitável"
 
-#: ./interfaces.py:133
+#: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
 msgstr "Id único para esta categoria de avaliação"
 
-#: ./interfaces.py:36
+#: ./../interfaces.py:40
 msgid "User Id"
 msgstr "Id do usuário"
 
-#: ./bbb.py:20
+#: ./../bbb.py:20
 msgid "User Rating"
 msgstr "Avaliação de usuário"
 
-#: ./browser/base_vocabs.py:12
+#: ./../browser/base_vocabs.py:12
 msgid "Very Good"
 msgstr "Muito bom"
 
-#: ./interfaces.py:157
+#: ./../interfaces.py:161
 msgid "View"
 msgstr "Visualização"
 
-#: ./interfaces.py:171
+#: ./../interfaces.py:175
 msgid "Write Expression"
 msgstr "Expressão para escrita"
 
-#: ./browser/basic.py:120
+#: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
 msgstr "Você já avaliou este item, e não é possível alterar sua avaliação sem que você informe seus dados."
 
-#: ./browser/basic.py:117
+#: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
 msgstr "Você alterou sua avaliação"
 
-#: ./browser/basic.py:136
+#: ./../browser/basic.py:149
 msgid "You have removed your rating"
 msgstr "Você removeu sua avaliação"
 
 #. Default: "Click to change the editor rating:"
-#: ./browser/bbb/editor_rating_edit.pt:11
+#: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
 msgstr "Clique para alterar a avaliação editorial:"
 
 #. Default: "Click to change your rating:"
-#: ./browser/bbb/user_rating_edit.pt:12
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
 msgstr "Clique para alterar sua avaliação:"
 
 #. Default: "Average Rating:"
-#: ./browser/bbb/user_rating.pt:7
+#: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
 msgstr "Média das avaliações:"
 
 #. Default: "Editorial Rating:"
-#: ./browser/bbb/editor_rating.pt:8
+#: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
 msgstr "Avaliação editorial:"
 
 #. Default: "(not rated)"
-#: ./browser/bbb/user_rating_edit.pt:13
+#: ./../browser/bbb/editor_rating_edit.pt
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
 msgstr "(não avaliado)"
 
 #. Default: "${raters} votes"
-#: ./browser/bbb/user_rating.pt:12
+#: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
 msgstr "${raters} votos"
 
 #. Default: "worthless"
-#: ./browser/bbb/user_rating_edit.pt:26
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
 msgstr "inútil"
 
 #. Default: "bad"
-#: ./browser/bbb/user_rating_edit.pt:28
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
 msgstr "ruim"
 
 #. Default: "average"
-#: ./browser/bbb/user_rating_edit.pt:30
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
 msgstr "mediano"
 
 #. Default: "good"
-#: ./browser/bbb/user_rating_edit.pt:32
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
 msgstr "bom"
 
 #. Default: "great"
-#: ./browser/bbb/user_rating_edit.pt:34
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
 msgstr "ótimo"
 
-#. Default: "(${count} votes)"
-#: ./browser/stars.pt:20
+#. Default: "( ${count} votes)"
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
+#, fuzzy
 msgid "user_vote_count"
 msgstr "(${count} votos)"
 
-#: ./browser/stars.pt:33
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
 msgid "vote_count"
 msgstr ""
 
 #. Default: "Your Rating:"
-#: ./browser/stars.pt:39
+#: ./../browser/stars.pt
 msgid "your_rating"
 msgstr "Sua avaliação:"
 

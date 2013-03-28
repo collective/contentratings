@@ -1,124 +1,124 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PloneContentRatings\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2013-03-28 07:40+0000\n"
-"PO-Revision-Date: 2007-10-14 15:04+0000\n"
-"Last-Translator: Dimitris Moraitis - dimo (at) indy [dot] gr\n"
-"Language-Team: Dimitris Moraitis - dimo (at) indy [dot] gr\n"
+"PO-Revision-Date: 2013-03-28 08:51+0100\n"
+"Last-Translator: Simone Orsi <simahawk@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: el\n"
-"Language-Name: Ελληνικά\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: contentratings\n"
 
 #: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
-msgstr ""
+msgstr "Un'espressione  TALES usata per determinare se sia possibile impostare il rating. Lasciare vuoto per consentire sempre."
 
 #: ./../interfaces.py:170
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
-msgstr ""
+msgstr "Un'espressione  TALES usata per determinare se sia possibile visualizzare il rating. Lasciare vuoto per consentire sempre."
 
 #: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
-msgstr ""
+msgstr "Accettabile"
 
 #: ./../interfaces.py:136
 msgid "Category Id"
-msgstr ""
+msgstr "Id Categoria"
 
 #: ./../interfaces.py:151
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 #: ./../bbb.py:16
 msgid "Editor Rating"
-msgstr ""
+msgstr "Voto Editor"
 
 #: ./../browser/base_vocabs.py:13
 msgid "Excellent"
-msgstr ""
+msgstr "Eccellente"
 
 #: ./../browser/base_vocabs.py:10
 msgid "Fair"
-msgstr ""
+msgstr "Discreto"
 
 #: ./../browser/base_vocabs.py:11
 msgid "Good"
-msgstr ""
+msgstr "Buono"
 
 #. Default: "No rating set"
 #: ./../browser/stars.pt
 msgid "No rating set"
-msgstr ""
+msgstr "Nessun voto"
 
 #: ./../interfaces.py:182
 msgid "Order"
-msgstr ""
+msgstr "Ordine"
 
 #: ./../browser/base_vocabs.py:9
 msgid "Poor"
-msgstr ""
+msgstr "Scarso"
 
 #: ./../interfaces.py:63
 msgid "Rating"
-msgstr ""
+msgstr "Voto"
 
 #: ./../interfaces.py:168
 msgid "Read Expression"
-msgstr ""
+msgstr "Espressione per lettura"
 
 #. Default: "Remove my rating"
 #: ./../browser/stars.pt
 msgid "Remove my rating"
-msgstr ""
+msgstr "Rimuovi il mio voto"
 
 #: ./../interfaces.py:162
 msgid "Select the view for this category"
-msgstr ""
+msgstr "Seleziona la vista per questa catogoria"
 
 #: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
-msgstr ""
+msgstr "Specifica l'oggetto da votare"
 
 #: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
-msgstr ""
+msgstr "Date e ora del voto (UTC)"
 
 #: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
-msgstr ""
+msgstr "Descrizione della categoria da mostrare nell'interfaccia utente."
 
 #: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
-msgstr ""
+msgstr "Titolo della categoria di voto, mantenere conciso"
 
 #: ./../metadirectives.py:13
 msgid "The dotted path to the storage factory"
-msgstr ""
+msgstr "Il 'dotted path' per la storage factory"
 
 #: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
-msgstr ""
+msgstr "Id dell'utente che vota"
 
 #: ./../browser/basic.py:62
 msgid "The rating has been changed"
-msgstr ""
+msgstr "Il voto é stato cambiato"
 
 #: ./../interfaces.py:64
 msgid "The rating of the current object"
-msgstr ""
+msgstr "Il voto dell'oggetto corrente"
 
 #: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
-msgstr ""
+msgstr "L'ordine relativo in cui la categoria dovrebbe comparire"
 
 #: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
-msgstr ""
+msgstr "La classe persistente usata per salvare i voti."
 
 #: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
@@ -130,109 +130,109 @@ msgstr ""
 
 #: ./../interfaces.py:144
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 #: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
-msgstr ""
+msgstr "Inaccettabile"
 
 #: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
-msgstr ""
+msgstr "Id univoco per questa categoria di voto"
 
 #: ./../interfaces.py:40
 msgid "User Id"
-msgstr ""
+msgstr "Id utente"
 
 #: ./../bbb.py:20
 msgid "User Rating"
-msgstr ""
+msgstr "Voto utente"
 
 #: ./../browser/base_vocabs.py:12
 msgid "Very Good"
-msgstr ""
+msgstr "Molto buono"
 
 #: ./../interfaces.py:161
 msgid "View"
-msgstr ""
+msgstr "Visualizza"
 
 #: ./../interfaces.py:175
 msgid "Write Expression"
-msgstr ""
+msgstr "Espression di scrittura"
 
 #: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
-msgstr ""
+msgstr "Hai giá votato questo oggetto e non puoi cambiare il tuo voto a meno che non ti autentichi."
 
 #: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
-msgstr ""
+msgstr "Hai cambiato il tuo voto"
 
 #: ./../browser/basic.py:149
 msgid "You have removed your rating"
-msgstr ""
+msgstr "Hai rimosso il tuo voto"
 
 #. Default: "Click to change the editor rating:"
 #: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
-msgstr "κλικ για αλλαγή αξιολόγησης συντάκτη"
+msgstr "Clicca per cambiare il voto editoriale:"
 
 #. Default: "Click to change your rating:"
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
-msgstr "κλικ για αλλαγή αξιολόγησης"
+msgstr "Clicca per cambiare il tuo voto:"
 
 #. Default: "Average Rating:"
 #: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
-msgstr "μέσος όρος"
+msgstr "Voto medio:"
 
 #. Default: "Editorial Rating:"
 #: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
-msgstr "αξιολόγηση συντάκτη"
+msgstr "Voto editoriale:"
 
 #. Default: "(not rated)"
 #: ./../browser/bbb/editor_rating_edit.pt
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
-msgstr "(χωρίς αξιολόγηση)"
+msgstr "(nessu voto)"
 
 #. Default: "${raters} votes"
 #: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
-msgstr "${raters} ψήφοι"
+msgstr "${raters} voti"
 
 #. Default: "worthless"
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
-msgstr "άχρηστο"
+msgstr "inutile"
 
 #. Default: "bad"
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
-msgstr "κακό"
+msgstr "cattivo"
 
 #. Default: "average"
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
-msgstr "μέτριο"
+msgstr "medio"
 
 #. Default: "good"
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
-msgstr "καλό"
+msgstr "buono"
 
 #. Default: "great"
 #: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
-msgstr "εξαιρετικό"
+msgstr "ottimo"
 
 #. Default: "( ${count} votes)"
 #: ./../browser/stars_view.pt
 #: ./../browser/stars.pt
 msgid "user_vote_count"
-msgstr ""
+msgstr "( ${count} voti)
 
 #: ./../browser/stars_view.pt
 #: ./../browser/stars.pt
@@ -242,5 +242,5 @@ msgstr ""
 #. Default: "Your Rating:"
 #: ./../browser/stars.pt
 msgid "your_rating"
-msgstr ""
+msgstr "Il tuo voto:"
 

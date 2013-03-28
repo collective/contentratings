@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-07-19 07:54+0000\n"
+"POT-Creation-Date: 2013-03-28 07:40+0000\n"
 "PO-Revision-Date: 2011-07-19 10:14+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,232 +14,234 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./interfaces.py:173
+#: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
 msgstr "Botua ematea baimentzeko bete behar den TALES espresioa. Utzi hutsik beti baimentzeko."
 
-#: ./interfaces.py:166
+#: ./../interfaces.py:170
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
 msgstr "Botuak ikustea ahalbidetzen duen TALES espresioa. Utzi hutsik beti baimentzeko."
 
-#: ./browser/base_vocabs.py:16
+#: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
 msgstr "Onargarria"
 
-#: ./interfaces.py:133
+#: ./../interfaces.py:136
 msgid "Category Id"
 msgstr "Kategoriaren identifikadorea"
 
-#: ./interfaces.py:148
+#: ./../interfaces.py:151
 msgid "Description"
 msgstr "Deskribapena"
 
-#: ./bbb.py:16
+#: ./../bbb.py:16
 msgid "Editor Rating"
 msgstr "Editorearen botoa"
 
-#: ./browser/base_vocabs.py:13
+#: ./../browser/base_vocabs.py:13
 msgid "Excellent"
 msgstr "Bikaina"
 
-#: ./browser/base_vocabs.py:10
+#: ./../browser/base_vocabs.py:10
 msgid "Fair"
 msgstr "Nahikoa"
 
-#: ./browser/base_vocabs.py:11
+#: ./../browser/base_vocabs.py:11
 msgid "Good"
 msgstr "Ona"
 
-#: ./browser/stars.pt:51
+#. Default: "No rating set"
+#: ./../browser/stars.pt
 msgid "No rating set"
 msgstr "Ez duzu botorik eman"
 
-#: ./interfaces.py:179
+#: ./../interfaces.py:182
 msgid "Order"
 msgstr "Ordena"
 
-#: ./browser/base_vocabs.py:9
+#: ./../browser/base_vocabs.py:9
 msgid "Poor"
 msgstr "Eskasa"
 
-#: ./interfaces.py:60
+#: ./../interfaces.py:63
 msgid "Rating"
 msgstr "Botua"
 
-#: ./interfaces.py:165
+#: ./../interfaces.py:168
 msgid "Read Expression"
 msgstr "Irakurtzeko espresioa"
 
-#: ./browser/stars.pt:42
+#. Default: "Remove my rating"
+#: ./../browser/stars.pt
 msgid "Remove my rating"
 msgstr "Ezabatu nire botoa"
 
-#: ./interfaces.py:159
+#: ./../interfaces.py:162
 msgid "Select the view for this category"
 msgstr "Aukeratu kategoria honen bista"
 
-#: ./metadirectives.py:8
+#: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
 msgstr "Botoa eman ahal izateko elementuak bete behar dituen balditzak"
 
-#: ./interfaces.py:45
+#: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
 msgstr "Botoa eman den eguna eta ordua (UTC)"
 
-#: ./interfaces.py:149
+#: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
 msgstr "Kategoriaren deskribapena"
 
-#: ./interfaces.py:142
+#: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
 msgstr "Kategoriaren izenburua."
 
-#: ./metadirectives.py:13
+#: ./../metadirectives.py:13
 msgid "The dotted path to the storage factory"
 msgstr "Botoak gordetzeko objektu-klasearen bidea"
 
-#: ./interfaces.py:38
+#: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
 msgstr "Botoa eman duen erabiltzailearen identifikadorea"
 
-#: ./browser/basic.py:62
+#: ./../browser/basic.py:62
 msgid "The rating has been changed"
 msgstr "Botoa ondo aldatu da"
 
-#: ./interfaces.py:61
+#: ./../interfaces.py:64
 msgid "The rating of the current object"
 msgstr "Uneko elementuaren botoak"
 
-#: ./interfaces.py:180
+#: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
 msgstr "Kategoria hau agertuko den ordena"
 
-#: ./metadirectives.py:14
+#: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
 msgstr "Botoak gordetzeko klasea da hau."
 
-#: ./metadirectives.py:9
+#: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
 msgstr "Interfaze bat edo klase bat izan behar da"
 
-#: ./interfaces.py:44
+#: ./../interfaces.py:47
 msgid "Time Stamp"
 msgstr "Ordua"
 
-#: ./interfaces.py:141
+#: ./../interfaces.py:144
 msgid "Title"
 msgstr "Izenburua"
 
-#: ./browser/base_vocabs.py:15
+#: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
 msgstr "Ez onargarria"
 
-#: ./interfaces.py:134
+#: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
 msgstr "Kategoria honen identifikadorea"
 
-#: ./interfaces.py:37
+#: ./../interfaces.py:40
 msgid "User Id"
 msgstr "Erabiltzailea"
 
-#: ./bbb.py:20
+#: ./../bbb.py:20
 msgid "User Rating"
 msgstr "Botoa"
 
-#: ./browser/base_vocabs.py:12
+#: ./../browser/base_vocabs.py:12
 msgid "Very Good"
 msgstr "Oso ona"
 
-#: ./interfaces.py:158
+#: ./../interfaces.py:161
 msgid "View"
 msgstr "Ikusi"
 
-#: ./interfaces.py:172
+#: ./../interfaces.py:175
 msgid "Write Expression"
 msgstr "Idazketa-espresioa"
 
-#: ./browser/basic.py:133
+#: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
 msgstr "Jada eman duzu botoa eta ezin duzu aldatu ez baduzu login egiten."
 
-#: ./browser/basic.py:130
-#: ./browser/bbb/__init__.py:55
+#: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
 msgstr "Zure botoa aldatu egin duzu"
 
-#: ./browser/basic.py:149
+#: ./../browser/basic.py:149
 msgid "You have removed your rating"
 msgstr "Zure botoa ezabatu egin duzu."
 
 #. Default: "Click to change the editor rating:"
-#: ./browser/bbb/editor_rating_edit.pt:11
+#: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
 msgstr "Egin klik editorearen botoa aldatzeko:"
 
 #. Default: "Click to change your rating:"
-#: ./browser/bbb/user_rating_edit.pt:12
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
 msgstr "Egin klik botoa aldatzeko:"
 
 #. Default: "Average Rating:"
-#: ./browser/bbb/user_rating.pt:7
+#: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
 msgstr "Batazbestekoa:"
 
 #. Default: "Editorial Rating:"
-#: ./browser/bbb/editor_rating.pt:8
+#: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
 msgstr "Editorearen botoa:"
 
 #. Default: "(not rated)"
-#: ./browser/bbb/editor_rating_edit.pt:12
-#: ./browser/bbb/user_rating_edit.pt:13
+#: ./../browser/bbb/editor_rating_edit.pt
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
 msgstr "(ez du botorik)"
 
 #. Default: "${raters} votes"
-#: ./browser/bbb/user_rating.pt:12
+#: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
 msgstr "${raters} boto"
 
 #. Default: "worthless"
-#: ./browser/bbb/user_rating_edit.pt:26
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
 msgstr "ez du merezi"
 
 #. Default: "bad"
-#: ./browser/bbb/user_rating_edit.pt:28
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
 msgstr "txarra"
 
 #. Default: "average"
-#: ./browser/bbb/user_rating_edit.pt:30
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
 msgstr "nahikoa"
 
 #. Default: "good"
-#: ./browser/bbb/user_rating_edit.pt:32
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
 msgstr "ona"
 
 #. Default: "great"
-#: ./browser/bbb/user_rating_edit.pt:34
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
 msgstr "oso ona"
 
-#. Default: "(${count} votes)"
-#: ./browser/stars.pt:20
-#: ./browser/stars_view.pt:17
+#. Default: "( ${count} votes)"
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
+#, fuzzy
 msgid "user_vote_count"
 msgstr "(${count} boto)"
 
-#: ./browser/stars.pt:33
-#: ./browser/stars_view.pt:30
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
 msgid "vote_count"
 msgstr "Boto kopurua"
 
 #. Default: "Your Rating:"
-#: ./browser/stars.pt:39
+#: ./../browser/stars.pt
 msgid "your_rating"
 msgstr "Zure botoa:"
 

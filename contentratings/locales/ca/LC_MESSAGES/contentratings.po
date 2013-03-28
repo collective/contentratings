@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: contentratings\n"
-"POT-Creation-Date: 2011-06-09 10:00\n"
+"POT-Creation-Date: 2013-03-28 07:40+0000\n"
 "PO-Revision-Date: 2011-06-09 10:00\n"
 "Last-Translator: FULL NAME <laura.perez-mayos@upcnet.es>\n"
 "Language-Team: UPCnet Plone Team <plone.team@upcnet.es>\n"
@@ -14,231 +14,235 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: contentratings\n"
 
-#: ./interfaces.py:172
+#: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
 msgstr "Una expressió TALES utilitzada per determinar si es permet la classificació. Deixar en blanc per permetre sempre."
 
-#: ./interfaces.py:165
+#: ./../interfaces.py:170
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
 msgstr "Una expressió TALES utilitzada per determinar si es permet la classificació. Deixar en blanc per permetre sempre."
 
-#: ./browser/base_vocabs.py:16
+#: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
 msgstr "Acceptable"
 
-#: ./interfaces.py:132
+#: ./../interfaces.py:136
 msgid "Category Id"
 msgstr "Identificador de categoria"
 
-#: ./interfaces.py:147
+#: ./../interfaces.py:151
 msgid "Description"
 msgstr "Descripció"
 
-#: ./bbb.py:16
+#: ./../bbb.py:16
 msgid "Editor Rating"
 msgstr "Qualificació de l'Editor"
 
-#: ./browser/base_vocabs.py:13
+#: ./../browser/base_vocabs.py:13
 msgid "Excellent"
 msgstr "Excel·lent"
 
-#: ./browser/base_vocabs.py:10
+#: ./../browser/base_vocabs.py:10
 msgid "Fair"
 msgstr "Just"
 
-#: ./browser/base_vocabs.py:11
+#: ./../browser/base_vocabs.py:11
 msgid "Good"
 msgstr "Bo"
 
 #. Default: "No rating set"
-#: ./browser/stars.pt:51
+#: ./../browser/stars.pt
 msgid "No rating set"
 msgstr "No hi ha qualificacions definides"
 
-#: ./interfaces.py:178
+#: ./../interfaces.py:182
 msgid "Order"
 msgstr "Ordre"
 
-#: ./browser/base_vocabs.py:9
+#: ./../browser/base_vocabs.py:9
 msgid "Poor"
 msgstr "Dolent"
 
-#: ./interfaces.py:59
+#: ./../interfaces.py:63
 msgid "Rating"
 msgstr "Qualificació"
 
-#: ./interfaces.py:164
+#: ./../interfaces.py:168
 msgid "Read Expression"
 msgstr "Llegir expressió"
 
 #. Default: "Remove my rating"
-#: ./browser/stars.pt:42
+#: ./../browser/stars.pt
 msgid "Remove my rating"
 msgstr "Esborrar la meva qualificació"
 
-#: ./interfaces.py:158
+#: ./../interfaces.py:162
 msgid "Select the view for this category"
 msgstr "Selecciona la vista per aquesta categoria"
 
-#: ./metadirectives.py:8
+#: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
 msgstr "Especificacions de l'objecte a qualificar"
 
-#: ./interfaces.py:44
+#: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
 msgstr "La data i l'hora de la qualificació (UTC)"
 
-#: ./interfaces.py:148
+#: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
 msgstr "La descripció de les categories per visualitzar a la interfície d'usuari."
 
-#: ./interfaces.py:141
+#: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
 msgstr "El títol mostrat de la categoria de qualificació, mantenir concís"
 
-#: ./metadirectives.py:13
+#: ./../metadirectives.py:13
 #, fuzzy
 msgid "The dotted path to the storage factory"
 msgstr "The dotted path to the storage factory"
 
-#: ./interfaces.py:37
+#: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
 msgstr "L'identificador de l'usuari que va fer la qualificació"
 
-#: ./browser/basic.py:50
+#: ./../browser/basic.py:62
 msgid "The rating has been changed"
 msgstr "S'ha canviat la qualificació"
 
-#: ./interfaces.py:60
+#: ./../interfaces.py:64
 msgid "The rating of the current object"
 msgstr "Qualificació de l'element actual"
 
-#: ./interfaces.py:179
+#: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
 msgstr "L'ordre relatiu en que la categoria hauria d'aparèixer."
 
-#: ./metadirectives.py:14
+#: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
 msgstr "Aquesta és la classe persistent utilitzada per emmagatzemar qualificacions."
 
-#: ./metadirectives.py:9
+#: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
 msgstr "Això hauria de ser una única interfície o classe"
 
-#: ./interfaces.py:43
+#: ./../interfaces.py:47
 msgid "Time Stamp"
 msgstr "Time Stamp"
 
-#: ./interfaces.py:140
+#: ./../interfaces.py:144
 msgid "Title"
 msgstr "Títol"
 
-#: ./browser/base_vocabs.py:15
+#: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
 msgstr "Inacceptable"
 
-#: ./interfaces.py:133
+#: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
 msgstr "Id únic per aquesta categoria"
 
-#: ./interfaces.py:36
+#: ./../interfaces.py:40
 msgid "User Id"
 msgstr "Id d'usuari"
 
-#: ./bbb.py:20
+#: ./../bbb.py:20
 msgid "User Rating"
 msgstr "Qualificació dels usuaris"
 
-#: ./browser/base_vocabs.py:12
+#: ./../browser/base_vocabs.py:12
 msgid "Very Good"
 msgstr "Molt bo"
 
-#: ./interfaces.py:157
+#: ./../interfaces.py:161
 msgid "View"
 msgstr "Veure"
 
-#: ./interfaces.py:171
+#: ./../interfaces.py:175
 msgid "Write Expression"
 msgstr "Escriure expressió"
 
-#: ./browser/basic.py:120
+#: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
 msgstr "Ja has qualificat aquest element, i no pots canviar la teva qualiicació a no ser que facis log in."
 
-#: ./browser/basic.py:117
+#: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
 msgstr "Has canviat la teva qualificació"
 
-#: ./browser/basic.py:136
+#: ./../browser/basic.py:149
 msgid "You have removed your rating"
 msgstr "Has esborrat la teva qualificació"
 
 #. Default: "Click to change the editor rating:"
-#: ./browser/bbb/editor_rating_edit.pt:11
+#: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
 msgstr "Clic per canviar la qualificació de l'editor:"
 
 #. Default: "Click to change your rating:"
-#: ./browser/bbb/user_rating_edit.pt:12
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
 msgstr "Clic per canviar la teva qualificació:"
 
 #. Default: "Average Rating:"
-#: ./browser/bbb/user_rating.pt:7
+#: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
 msgstr "Qualificació promig:"
 
 #. Default: "Editorial Rating:"
-#: ./browser/bbb/editor_rating.pt:8
+#: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
 msgstr "Qualificació editorial:"
 
 #. Default: "(not rated)"
-#: ./browser/bbb/editor_rating_edit.pt:12
+#: ./../browser/bbb/editor_rating_edit.pt
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
 msgstr "(No qualificat)"
 
 #. Default: "${raters} votes"
-#: ./browser/bbb/user_rating.pt:12
+#: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
 msgstr "${raters} vots"
 
 #. Default: "worthless"
-#: ./browser/bbb/user_rating_edit.pt:26
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
 msgstr "sense valor"
 
 #. Default: "bad"
-#: ./browser/bbb/user_rating_edit.pt:28
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
 msgstr "dolent"
 
 #. Default: "average"
-#: ./browser/bbb/user_rating_edit.pt:30
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
 msgstr "promig"
 
 #. Default: "good"
-#: ./browser/bbb/user_rating_edit.pt:32
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
 msgstr "bo"
 
 #. Default: "great"
-#: ./browser/bbb/user_rating_edit.pt:34
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
 msgstr "fantàstic"
 
-#. Default: "(${count} votes)"
-#: ./browser/stars.pt:20
+#. Default: "( ${count} votes)"
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
+#, fuzzy
 msgid "user_vote_count"
 msgstr "(${count} vots)"
 
-#: ./browser/stars.pt:33
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
 msgid "vote_count"
 msgstr ""
 
 #. Default: "Your Rating:"
-#: ./browser/stars.pt:39
+#: ./../browser/stars.pt
 msgid "your_rating"
 msgstr "El teu vot:"
 

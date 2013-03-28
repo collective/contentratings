@@ -4,243 +4,250 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-17 09:45+0000\n"
+"POT-Creation-Date: 2013-03-28 07:40+0000\n"
 "PO-Revision-Date: 2008-06-17 15:31+0200\n"
 "Last-Translator: Jarno de Wit <Jarno.de.Wit@pareto.nl>\n"
 "Language-Team: Plone Nederlands <plone-nl@lists.plone.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: ./interfaces.py:172
+#: ./../interfaces.py:177
 msgid "A TALES expression used to determine whether setting the rating is allowed.  Leave blank to always allow."
 msgstr "Een TALES expressie om te bepalen of waarderingen mogen worden gegeven. Laat leeg om altijd toe te staan."
 
-#: ./interfaces.py:165
+#: ./../interfaces.py:170
 #, fuzzy
 msgid "A TALES expression used to determine whether viewing the rating is allowed.  Leave blank to always allow."
 msgstr "Een TALES expressie om te bepalen of een waardering mag worden bekeken. Laat leeg om altijd toe te staan."
 
-#: ./browser/base_vocabs.py:16
+#: ./../browser/base_vocabs.py:16
 msgid "Acceptable"
 msgstr "Acceptabel"
 
-#: ./interfaces.py:132
+#: ./../interfaces.py:136
 msgid "Category Id"
 msgstr "Categorie ID"
 
-#: ./interfaces.py:147
+#: ./../interfaces.py:151
 msgid "Description"
 msgstr "Omschrijving"
 
-#: ./bbb.py:16
+#: ./../bbb.py:16
 msgid "Editor Rating"
 msgstr "Waardering schrijver"
 
-#: ./browser/base_vocabs.py:13
+#: ./../browser/base_vocabs.py:13
 msgid "Excellent"
 msgstr "Perfect"
 
-#: ./browser/base_vocabs.py:10
+#: ./../browser/base_vocabs.py:10
 msgid "Fair"
 msgstr "Redelijk"
 
-#: ./browser/base_vocabs.py:11
+#: ./../browser/base_vocabs.py:11
 msgid "Good"
 msgstr "Goed"
 
 #. Default: "No rating set"
-#: ./browser/stars.pt:51
+#: ./../browser/stars.pt
 msgid "No rating set"
 msgstr "Geen waardering gegeven"
 
-#: ./interfaces.py:178
+#: ./../interfaces.py:182
 msgid "Order"
 msgstr "Volgorde"
 
-#: ./browser/base_vocabs.py:9
+#: ./../browser/base_vocabs.py:9
 msgid "Poor"
 msgstr "Matig"
 
-#: ./interfaces.py:59
+#: ./../interfaces.py:63
 msgid "Rating"
 msgstr "Waardering"
 
-#: ./interfaces.py:164
+#: ./../interfaces.py:168
 #, fuzzy
 msgid "Read Expression"
 msgstr "Lees expressie"
 
 #. Default: "Remove my rating"
-#: ./browser/stars.pt:42
+#: ./../browser/stars.pt
 msgid "Remove my rating"
 msgstr "Verwijder mijn waardering"
 
-#: ./interfaces.py:158
+#: ./../interfaces.py:162
 msgid "Select the view for this category"
 msgstr "Kies de weergave voor deze categorie"
 
-#: ./metadirectives.py:8
+#: ./../metadirectives.py:8
 msgid "Specifications of the object to be rated"
 msgstr "Eigenschappen van het te waarderen object"
 
-#: ./interfaces.py:44
+#: ./../interfaces.py:48
 msgid "The date and time the rating was made (UTC)"
 msgstr "De datum en tijd van de waardering (UTC)"
 
-#: ./interfaces.py:148
+#: ./../interfaces.py:153
 msgid "The description of the category for display in the user interface."
 msgstr "De omschrijving van de categorie voor weergave in de gebruikersinterface."
 
-#: ./interfaces.py:141
+#: ./../interfaces.py:146
 msgid "The displayed title of this ratings category, keep this concise"
 msgstr "De getoonde titel van deze waarderingscategorie. Houdt dit consequent."
 
-#: ./metadirectives.py:13
+#: ./../metadirectives.py:13
 msgid "The dotted path to the storage factory"
 msgstr ""
 
-#: ./interfaces.py:37
+#: ./../interfaces.py:41
 msgid "The id of the user who set the rating"
 msgstr "Het unieke id van de gebruiker die de waardering gaf"
 
-#: ./browser/basic.py:50
+#: ./../browser/basic.py:62
 msgid "The rating has been changed"
 msgstr "De waardering is gewijzigd"
 
-#: ./interfaces.py:60
+#: ./../interfaces.py:64
 msgid "The rating of the current object"
 msgstr "De waardering van het huidige object"
 
-#: ./interfaces.py:179
+#: ./../interfaces.py:184
 msgid "The relative order in which the category should appear."
 msgstr "De relatieve volgorde waarin de categorie moet worden getoond."
 
-#: ./metadirectives.py:14
+#: ./../metadirectives.py:14
 msgid "This is the persistent class used for storing ratings."
 msgstr ""
 
-#: ./metadirectives.py:9
+#: ./../metadirectives.py:9
 msgid "This should be a single interface or class"
 msgstr ""
 
-#: ./interfaces.py:43
+#: ./../interfaces.py:47
 msgid "Time Stamp"
 msgstr ""
 
-#: ./interfaces.py:140
+#: ./../interfaces.py:144
 msgid "Title"
 msgstr "Titel"
 
-#: ./browser/base_vocabs.py:15
+#: ./../browser/base_vocabs.py:15
 msgid "Unacceptable"
 msgstr "Onacceptabel"
 
-#: ./interfaces.py:133
+#: ./../interfaces.py:137
 msgid "Unique Id for this rating category"
 msgstr "Unieke ID voor deze waarderingscategorie"
 
-#: ./interfaces.py:36
+#: ./../interfaces.py:40
 msgid "User Id"
 msgstr "Gebruikers ID"
 
-#: ./bbb.py:20
+#: ./../bbb.py:20
 msgid "User Rating"
 msgstr "Gebruikers waardering"
 
-#: ./browser/base_vocabs.py:12
+#: ./../browser/base_vocabs.py:12
 msgid "Very Good"
 msgstr "Heel erg goed"
 
-#: ./interfaces.py:157
+#: ./../interfaces.py:161
 msgid "View"
 msgstr "Weergave"
 
-#: ./interfaces.py:171
+#: ./../interfaces.py:175
 msgid "Write Expression"
 msgstr ""
 
-#: ./browser/basic.py:120
+#: ./../browser/basic.py:135
 msgid "You have already rated this item, and cannot change your rating unless you log in."
 msgstr "U heeft al een waardering gegeven aan dit item. U kunt deze alleen aanpassen als u inlogt."
 
-#: ./browser/basic.py:117
+#: ./../browser/bbb/__init__.py:55
 msgid "You have changed your rating"
 msgstr "U heeft uw waardering aangepast"
 
-#: ./browser/basic.py:136
+#: ./../browser/basic.py:149
 msgid "You have removed your rating"
 msgstr "U heeft uw waardering verwijderd"
 
 #. Default: "Click to change the editor rating:"
-#: ./browser/bbb/editor_rating_edit.pt:11
+#: ./../browser/bbb/editor_rating_edit.pt
 msgid "click_to_change_editor_rating"
 msgstr ""
 
 #. Default: "Click to change your rating:"
-#: ./browser/bbb/user_rating_edit.pt:12
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "click_to_change_rating"
 msgstr "Klik om uw waardering te wijzigen:"
 
 #. Default: "Average Rating:"
-#: ./browser/bbb/user_rating.pt:7
+#: ./../browser/bbb/user_rating.pt
 msgid "label_avg_rating"
 msgstr "Gemiddelde waardering:"
 
 #. Default: "Editorial Rating:"
-#: ./browser/bbb/editor_rating.pt:8
+#: ./../browser/bbb/editor_rating.pt
 msgid "label_editorial_rating"
 msgstr "Waardering van schrijver"
 
 #. Default: "(not rated)"
-#: ./browser/bbb/user_rating_edit.pt:13
+#: ./../browser/bbb/editor_rating_edit.pt
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "not_rated"
 msgstr "(nog geen waardering)"
 
 #. Default: "${raters} votes"
-#: ./browser/bbb/user_rating.pt:12
+#: ./../browser/bbb/user_rating.pt
 msgid "number-of-raters"
 msgstr "${raters} waarderingen"
 
 #. Default: "worthless"
-#: ./browser/bbb/user_rating_edit.pt:26
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_1"
 msgstr "waardeloos"
 
 #. Default: "bad"
-#: ./browser/bbb/user_rating_edit.pt:28
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_2"
 msgstr "slecht"
 
 #. Default: "average"
-#: ./browser/bbb/user_rating_edit.pt:30
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_3"
 msgstr "gemiddeld"
 
 #. Default: "good"
-#: ./browser/bbb/user_rating_edit.pt:32
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_4"
 msgstr "goed"
 
 #. Default: "great"
-#: ./browser/bbb/user_rating_edit.pt:34
+#: ./../browser/bbb/user_rating_edit.pt
 msgid "rating_5"
 msgstr "fantastisch"
 
-#. Default: "(${count} votes)"
-#: ./browser/stars.pt:20
+#. Default: "( ${count} votes)"
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
+#, fuzzy
 msgid "user_vote_count"
 msgstr "(${count} waarderingen)"
 
-#: ./browser/stars.pt:33
+#: ./../browser/stars_view.pt
+#: ./../browser/stars.pt
 msgid "vote_count"
 msgstr ""
 
-
 #. Default: "Your Rating:"
-#: ./browser/stars.pt:39
+#: ./../browser/stars.pt
 msgid "your_rating"
 msgstr "Uw waardering:"
 
