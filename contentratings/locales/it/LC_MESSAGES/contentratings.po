@@ -232,7 +232,7 @@ msgstr "ottimo"
 #: ./../browser/stars_view.pt
 #: ./../browser/stars.pt
 msgid "user_vote_count"
-msgstr "( ${count} voti)
+msgstr "(${count} voti)"
 
 #: ./../browser/stars_view.pt
 #: ./../browser/stars.pt
