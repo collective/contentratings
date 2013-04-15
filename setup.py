@@ -37,6 +37,7 @@ setup(name='contentratings',
       zip_safe=False,
       install_requires=[
          'setuptools',
+         'zope.app.component'
       ],
       extras_require=dict(test=['zope.app.testing',]),
       )
