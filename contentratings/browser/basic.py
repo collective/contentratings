@@ -55,6 +55,13 @@ class BasicEditorialRatingView(object):
             url = context.absolute_url()
         return url
 
+    @property
+    def content_uid(self):
+        """Returns the content url, try to make Zope 2 and 3 happy"""
+        # context.context is the content being rated
+        context = self.context.context
+        return context.UID()
+
     def rate(self, value, redirect=True):
         """Rate the content.  Enforce vocabulary values.
         """

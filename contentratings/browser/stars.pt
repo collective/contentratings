@@ -1,6 +1,7 @@
 <div class="Rating"
      i18n:domain="contentratings"
      tal:define="view_url string:${view/content_url}/++${view/traversal_name}++${context/name};
+                 content_uid view/content_uid;
                  current view/current_rating;
                  star_size view/star_size|python:25;
                  values view/vocabulary;
@@ -8,7 +9,7 @@
                  base_width python:count*star_size;
                  cat_name python:context.name or '_default';
                  small_star python:star_size &lt;= 12 and ' small-star' or '';"
-     tal:attributes="class python:'Rating' + small_star + ' kssattr-category-' + cat_name;
+     tal:attributes="class python:'Rating' + small_star + ' kssattr-category-' + cat_name + ' uid-' + content_uid;
                      id string:rating-stars-view-${cat_name};">
 
 <div class="AverageRating"
@@ -46,7 +47,8 @@
      i18n:translate=""
      i18n:attributes="title"
      tal:condition="python:current is not None"
-     tal:attributes="href string:${view_url}/remove_rating">
+     tal:attributes="href string:${view_url}/remove_rating;
+                     class string:DeleteRating uid-${content_uid}">
     Remove my rating
   </a>
   <span class="DeleteRating Disabled"
@@ -79,7 +81,7 @@
                        width python:100 - (float(count - iter)/count)*100;"
            tal:attributes="href string:${view_url}/rate?value=${value/value};
                            title value/title;
-                           class string:rate star-${iter};
+                           class string:rate star-${iter} uid-${content_uid};
                            style string:width: ${width}%;; z-index: ${z_index};"
            tal:content="value/value">
           excellent
