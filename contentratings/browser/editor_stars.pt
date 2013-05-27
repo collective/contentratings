@@ -35,6 +35,7 @@
         <a href="#"
            class="rate star-1"
            title="Excellent"
+           rel="nofollow"
            tal:define="iter repeat/value/number;
                        z_index python:count - iter + 1;
                        width python:100 - (float(count - iter)/count)*100;"
