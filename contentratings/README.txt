@@ -9,19 +9,22 @@ any IAnnotatable object.
 
 Dependencies:
 
-BTrees
-persistent
-zope.annotations
-zope.container
-zope.app.testing
-zope.interface
-zope.component
-zope.lifecycleevent
-zope.location
-zope.schema
-zope.tales
+- BTrees
+- persistent
+- zope.annotations
+- zope.app.content
+- zope.app.testing
+- zope.component
+- zope.componentvocabulary
+- zope.container
+- zope.interface
+- zope.lifecycleevent
+- zope.location
+- zope.schema
+- zope.tales
 
-All of these packages are included in Zope 2.10+ and Zope 3.2+.
+All of these packages are included in Zope 2.12+ and Plone 4.0+.  This
+package is tested with Plone 4.0-4.3.
 
 
 Using contentratings in Your Packages or Products
