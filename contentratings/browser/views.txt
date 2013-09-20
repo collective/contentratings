@@ -79,7 +79,7 @@ it falls back on looking for Zope 2's 'absolute_url' method::
     ...     return 'A fake URL'
     >>> from zope.publisher.interfaces.browser import IBrowserRequest
     >>> from zope.traversing.browser.interfaces import IAbsoluteURL
-    >>> from zope.app.container.sample import SampleContainer
+    >>> from zope.container.sample import SampleContainer
     >>> ztapi.provideAdapter((SampleContainer, IBrowserRequest), IAbsoluteURL,
     ...                      url)
     >>> view.content_url

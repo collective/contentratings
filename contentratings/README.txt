@@ -12,7 +12,7 @@ Dependencies:
 BTrees
 persistent
 zope.annotations
-zope.app.container
+zope.container
 zope.app.testing
 zope.interface
 zope.component
@@ -81,7 +81,7 @@ custom conditions.
 Let's demonstrate how these categories might be used.  We need to
 create some content and mark it with our marker interface::
 
-    >>> from zope.app.container.sample import SampleContainer
+    >>> from zope.container.sample import SampleContainer
     >>> content = SampleContainer()
     >>> from contentratings.interfaces import IUserRatable
     >>> from zope.interface import alsoProvides
@@ -164,7 +164,7 @@ Now we register our rating category using the
     ... <configure
     ...    xmlns:contentratings="http://namespaces.plone.org/contentratings">
     ...  <contentratings:category
-    ...      for="zope.app.container.sample.SampleContainer"
+    ...      for="zope.container.sample.SampleContainer"
     ...      title="My Rating Category"
     ...      />
     ... </configure>""", context=context)
@@ -178,7 +178,7 @@ simply adapters providing the rating interface provided by the
 (default) storage::
 
     >>> from contentratings.interfaces import IUserRating
-    >>> from zope.app.container.sample import SampleContainer
+    >>> from zope.container.sample import SampleContainer
     >>> content = SampleContainer()
     >>> adapted = IUserRating(content)
     >>> IUserRating.providedBy(adapted)
@@ -202,7 +202,7 @@ To provide multiple categories, just register them with unique names::
     ... <configure
     ...    xmlns:contentratings="http://namespaces.plone.org/contentratings">
     ...  <contentratings:category
-    ...      for="zope.app.container.sample.SampleContainer"
+    ...      for="zope.container.sample.SampleContainer"
     ...      title="My Other Rating Category"
     ...      name="other"
     ...      />

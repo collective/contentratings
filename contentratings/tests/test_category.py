@@ -5,7 +5,7 @@ from zope.app.testing import ztapi, placelesssetup
 from zope.annotation.interfaces import IAnnotations
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation.attribute import AttributeAnnotations
-from zope.app.container.sample import SampleContainer
+from zope.container.sample import SampleContainer
 
 from contentratings.interfaces import IRatingType
 from contentratings.interfaces import IRatingStorage

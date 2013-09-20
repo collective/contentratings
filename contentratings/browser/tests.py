@@ -1,7 +1,7 @@
 import unittest
 from zope.testing import doctestunit
 from zope.interface import Interface, directlyProvides
-from zope.app.container.sample import SampleContainer
+from zope.container.sample import SampleContainer
 from zope.app.testing import ztapi
 from zope.component.testing import setUp, tearDown
 from zope.annotation.interfaces import IAnnotations

@@ -1,12 +1,7 @@
 from datetime import datetime
 from itertools import chain
 from zope.interface import implements
-try:
-    from zope.container.contained import Contained
-    Contained  # pyflakes
-except ImportError:
-    # BBB for Plone 3
-    from zope.app.container.contained import Contained
+from zope.container.contained import Contained
 from persistent import Persistent
 from BTrees.OOBTree import OOBTree
 from BTrees.IOBTree import IOBTree
