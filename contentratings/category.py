@@ -2,18 +2,8 @@ from persistent import Persistent
 from zope.interface import implements, Interface, alsoProvides
 from zope.component import adapts, queryMultiAdapter, getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
-try:
-    from zope.app.content import queryType
-    queryType  # pyflakes
-except ImportError:
-    # BBB Zope 2.10
-    from zope.app.interface import queryType
-try:
-    from zope.container.contained import contained
-    contained  # pyflakes
-except ImportError:
-    # BBB for Plone 3
-    from zope.app.container.contained import contained
+from zope.app.content import queryType
+from zope.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
 try:

@@ -1,13 +1,7 @@
 from zope.interface import Interface, Attribute, directlyProvides
 from zope.interface.interfaces import IInterface
 from zope.annotation.interfaces import IAnnotatable
-try:
-    from zope.componentvocabulary.vocabulary import InterfacesVocabulary
-    InterfacesVocabulary  # pyflakes
-except ImportError:
-    # BBB Plone 3
-    from zope.app.component.vocabulary import InterfacesVocabulary
-
+from zope.componentvocabulary.vocabulary import InterfacesVocabulary
 from zope.schema import Float
 from zope.schema import Int
 from zope.schema import ASCII
