@@ -13,7 +13,8 @@ def read(*rnames):
 description = read('README.txt') + '\n\n' + \
     'Detailed Documentation\n' + \
     '**********************\n\n' + \
-    read('contentratings', 'README.txt')
+    read('contentratings', 'README.txt') + '\n\n' + \
+    read('HISTORY.txt')
 
 
 setup(name='contentratings',
