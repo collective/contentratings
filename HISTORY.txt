@@ -4,7 +4,8 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+* Update to support Zope 2.13 and Plone 4.0 through 4.3 and clear up
+  dependencies.
 
 
 1.0-final (2011-08-21)
