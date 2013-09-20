@@ -4,17 +4,21 @@ from zope.component import adapts, queryMultiAdapter, getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
 try:
     from zope.app.content import queryType
+    queryType  # pyflakes
 except ImportError:
-    # BBB Zope 2.12
+    # BBB Zope 2.10
     from zope.app.interface import queryType
 try:
     from zope.container.contained import contained
+    contained  # pyflakes
 except ImportError:
+    # BBB for Plone 3
     from zope.app.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
 try:
     from Acquisition import aq_base
+    aq_base  # pyflakes
 except ImportError:
     # Do nothing if this is not Zope2
     aq_base = lambda x: x
@@ -28,6 +32,7 @@ from contentratings.events import ObjectRatedEvent
 from contentratings.storage import UserRatingStorage
 
 BASE_KEY = 'contentratings.userrating'
+
 
 class RatingsCategoryFactory(Persistent):
     """Contains all settings for a rating category"""
@@ -91,6 +96,7 @@ def expression_runner(name):
             return res
         return True
     return runner
+
 
 class RatingCategoryAdapter(object):
     """A multiadapter which takes the rating settings, the rating
@@ -205,7 +211,7 @@ class RatingCategoryAdapter(object):
             assert self.can_read
             return getattr(self.storage, name)
         else:
-            raise AttributeError, name
+            raise AttributeError(name)
 
     def __setattr__(self, name, value):
         """If name is part of our storage interface, set the

@@ -1,8 +1,8 @@
 from zope.component import getAdapter, adapts, getMultiAdapter
 from zope.interface import implements, Interface
 from zope.traversing.interfaces import ITraversable
-from Acquisition import ExplicitAcquisitionWrapper
 from contentratings.interfaces import IUserRating, IEditorialRating
+
 
 class user_rating(object):
     """Traversal adapter to lookup the view for a named IUserRating category.
@@ -73,6 +73,7 @@ class user_rating(object):
         view_name = manager.view_name
         adapter = getMultiAdapter((manager, self.request), name=view_name)
         return adapter
+
 
 class editorial_rating(user_rating):
     """Traversal adapter to lookup the view for an IEditorialRating

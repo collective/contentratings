@@ -10,10 +10,12 @@ from ZPublisher.BaseRequest import DefaultPublishTraverse
 
 try:
     from Products.statusmessages.interfaces import IStatusMessage
+    IStatusMessage  # pyflakes
 except ImportError:
     # No Plone
     class IStatusMessage(Interface):
         pass
+
 
 class BasicEditorialRatingView(object):
     """A basic view for applying and removing user ratings.  Expects
@@ -30,7 +32,7 @@ class BasicEditorialRatingView(object):
         publishTraverse.
         """
         adapter = DefaultPublishTraverse(self, request)
-        return adapter.publishTraverse(request,name)
+        return adapter.publishTraverse(request, name)
 
     def __init__(self, context, request):
         """We implement this to make the tests happy"""
@@ -76,7 +78,7 @@ class BasicEditorialRatingView(object):
         """
         if redirect:
             url = self.request.get('HTTP_REFERER', self.content_url)
-            redirect = redirect == True and url or redirect
+            redirect = redirect is True and url or redirect
             if msg:
                 self._setMessage(msg)
             self.request.response.redirect(redirect)
@@ -117,7 +119,7 @@ class BasicUserRatingView(BasicEditorialRatingView):
                 # user can't view other ratings.
                 last_rating = context.storage.last_anon_rating(key)
                 if last_rating and \
-                       (datetime.utcnow() - last_rating) <= self.ANON_TIMEOUT:
+                        (datetime.utcnow() - last_rating) <= self.ANON_TIMEOUT:
                     return False
         return True
 
@@ -148,7 +150,6 @@ class BasicUserRatingView(BasicEditorialRatingView):
             context.remove_rating(userid)
         return self._redirect(redirect, msg=_(u'You have removed your rating'))
 
-
     @property
     def current_rating(self):
         """Return the logged in user's currently set rating regardless of
@@ -159,9 +160,11 @@ class BasicUserRatingView(BasicEditorialRatingView):
         # go directly to the storage to bypass security
         return userid and context.storage.userRating(userid)
 
+
 class SmallStarUserRating(BasicUserRatingView):
     """A view that specifies small stars"""
-    star_size = 12 # px
+    star_size = 12  # px
+
 
 class ThreeStarUserRating(SmallStarUserRating):
     """A view that specifies small stars"""

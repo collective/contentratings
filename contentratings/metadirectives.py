@@ -1,6 +1,7 @@
 import zope.configuration.fields
-from zope.interface import Interface
+
 from contentratings.interfaces import _, IRatingCategoryInfo
+
 
 class ICategoryDirective(IRatingCategoryInfo):
     """Describes a rating category"""

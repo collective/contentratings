@@ -6,9 +6,7 @@ from zope.annotation.interfaces import IAnnotations
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation.attribute import AttributeAnnotations
 from zope.app.container.sample import SampleContainer
-from zope.configuration import xmlconfig
 
-import contentratings
 from contentratings.bbb import EditorialRating
 from contentratings.bbb import UserRating
 from contentratings.interfaces import IEditorRatable
@@ -18,11 +16,11 @@ from contentratings.interfaces import IUserRating
 from contentratings.interfaces import IRatingType
 from contentratings.interfaces import IRatingCategory
 from contentratings.interfaces import IRatingManager
-from contentratings.interfaces import IRatingStorage
 from contentratings.category import RatingCategoryAdapter
 from contentratings.rating import Rating, NPRating
 from contentratings.storage import UserRatingStorage
 from contentratings.storage import EditorialRatingStorage
+
 
 def baseIntegration(test):
     placelesssetup.setUp(test)
@@ -36,6 +34,7 @@ def baseIntegration(test):
                          IRatingManager, RatingCategoryAdapter)
     container = SampleContainer()
     test.globs = {'my_container': container}
+
 
 def setUpBBB(test):
     baseIntegration(test)

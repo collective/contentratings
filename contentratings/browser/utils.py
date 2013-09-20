@@ -1,6 +1,5 @@
 import random
-from zope.interface import implements
-from contentratings.browser.interfaces import IAnonymousSession
+
 
 class AnonSessionUtil(object):
     """A utility to create a unique key for an anonymous browser::

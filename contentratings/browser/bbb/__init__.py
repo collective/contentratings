@@ -2,9 +2,9 @@
 
 from zope.interface import implements, Interface
 from zope.location.interfaces import ISublocations
-from zope.i18nmessageid import MessageFactory
 try:
     from Products.statusmessages.interfaces import IStatusMessage
+    IStatusMessage  # pyflakes
 except ImportError:
     # Dummy
     class IStatusMessage(Interface):
@@ -22,6 +22,7 @@ try:
     ZOPE3= False
 except ImportError:
     ZOPE3 = True
+
 
 class EditorialRatingView(object):
     """A view for getting the rating information"""
@@ -114,8 +115,8 @@ class UserRatingSetView(object):
         if self.canRate():
             self.adapted.rate(rating, user)
         else:
-            raise NotImplementedError, \
-                  "You may not re-rate an object anonymously!"
+            raise NotImplementedError(
+                "You may not re-rate an object anonymously!")
         # We set a cookie after an anonymous rating so that it's not
         # so easy to anonymously spam the ratings.
         if user is None:

@@ -3,8 +3,9 @@ from zope.interface.interfaces import IInterface
 from zope.annotation.interfaces import IAnnotatable
 try:
     from zope.componentvocabulary.vocabulary import InterfacesVocabulary
+    InterfacesVocabulary  # pyflakes
 except ImportError:
-    #Zope BBB
+    # BBB Plone 3
     from zope.app.component.vocabulary import InterfacesVocabulary
 
 from zope.schema import Float
@@ -17,19 +18,23 @@ from zope.component.interfaces import IObjectEvent
 
 _ = MessageFactory('contentratings')
 
+
 class IEditorRatable(IAnnotatable):
     """Marker interface that promises that an implementing object may be
     rated by an editor using the IEditorialRating interface.
     """
+
 
 class IUserRatable(IAnnotatable):
     """Marker interface that promises that an implementing object may be
     rated by users using the IUserRating interface.
     """
 
+
 class IRatingStorage(Interface):
     """A marker interface indicating that an object is used
     to store ratings in an annotation"""
+
 
 class IRating(Interface):
     """An object representing a user rating, the rating attributes
@@ -68,6 +73,7 @@ class IEditorialRating(Interface):
     scale = Attribute("Deprecated restriction on the maximum value")
 
 directlyProvides(IEditorialRating, IRatingType)
+
 
 class IUserRating(Interface):
     """A rating class that allows users to set and adjust their ratings of
@@ -119,16 +125,20 @@ class IObjectRatedEvent(IObjectEvent):
     rating = Attribute("The IRating set on the object")
     category = Attribute("The category in which this rating was set")
 
+
 #BBB
 class IObjectUserRatedEvent(IObjectRatedEvent):
     """An event that is emitted when an object is rated by a user"""
+
 
 #BBB
 class IObjectEditorRatedEvent(IObjectRatedEvent):
     """An event that is emitted when an object is rated by an editor"""
 
+
 class IRatingStorageMigrator(Interface):
     """Class for migrating the rating storage from one form to another"""
+
 
 class IRatingCategoryInfo(Interface):
     """Describes the schema of a ratings category"""
@@ -212,6 +222,7 @@ class IRatingManager(Interface):
     can_write = Attribute(u"Indicates whether the rating can be set")
     view_name = Attribute(u"The name of the rating view")
     storage = Attribute(u"The rating storage")
+
 
 # The vocabulary of interfaces providing IRatingType
 class RatingTypeVocabulary(InterfacesVocabulary):
