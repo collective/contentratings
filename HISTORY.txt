@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1 (unreleased)
+1.1 (2013-09-20)
 ----------------
 
 * Update to support Zope 2.13 and Plone 4.0 through 4.3 and clear up
