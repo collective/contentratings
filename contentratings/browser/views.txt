@@ -116,7 +116,7 @@ The view ensures that input values are valid in the vocabulary::
     >>> view.rate(3) # doctest: +ELLIPSIS
     Traceback (most recent call last):
     ...
-    AssertionError
+    BadRequest: Invalid rating value
 
 And the manager ensures that the category conditions are checked::
 
