@@ -7,6 +7,7 @@ from contentratings.browser.interfaces import IRatingView
 from contentratings.interfaces import _
 from zope.schema.interfaces import IVocabularyTokenized
 from ZPublisher.BaseRequest import DefaultPublishTraverse
+from zExceptions import BadRequest
 
 try:
     from Products.statusmessages.interfaces import IStatusMessage
@@ -60,7 +61,13 @@ class BasicEditorialRatingView(object):
     def rate(self, value, redirect=True):
         """Rate the content.  Enforce vocabulary values.
         """
-        assert int(value) in self.vocabulary
+        try:
+            value = int(value)
+            if value not in self.vocabulary:
+                raise ValueError()
+        except ValueError:
+            raise BadRequest("Invalid rating value")
+
         msg = _(u'The rating has been changed')
 
         self.context.rating = value
@@ -126,7 +133,13 @@ class BasicUserRatingView(BasicEditorialRatingView):
     def rate(self, value, redirect=True):
         """Rate the content.  Enforce vocabulary values.
         """
-        assert int(value) in self.vocabulary
+        try:
+            value = int(value)
+            if value not in self.vocabulary:
+                raise ValueError()
+        except ValueError:
+            raise BadRequest("Invalid rating value")
+
         context = self.context
         userid = context.userid
         msg = _(u'You have changed your rating')
