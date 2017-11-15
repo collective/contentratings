@@ -17,7 +17,7 @@
 .star-rating a:active,
 .star-rating a:focus,
 .star-rating .current-rating {
-	background: url(++resource++contentratings/star.gif) left -1000px repeat-x;
+	background: url("++resource++contentratings/star.gif") left -1000px repeat-x;
 }
 .star-rating {
 	position:relative;
@@ -79,14 +79,14 @@
     height: 25px;
     margin-left: 11px;
     text-indent: -1000em;
-    background-image: url(++resource++contentratings/X_icon_20x20.gif);
+    background-image: url("++resource++contentratings/X_icon_20x20.gif");
     background-position: center center;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 
 .UserRating .DeleteRating.Disabled {
-    background-image: url(++resource++contentratings/X_icon_20x20_gray.gif);
+    background-image: url("++resource++contentratings/X_icon_20x20_gray.gif");
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -103,7 +103,7 @@
 .small-star a:active,
 .small-star a:focus,
 .small-star .current-rating {
-	background-image: url(++resource++contentratings/star_small.gif);
+	background-image: url("++resource++contentratings/star_small.gif");
 	line-height: 1em;
 	height: 10px;
 }
@@ -111,13 +111,13 @@
 .small-star .UserRating .DeleteRating {
     width: 12px;
     height: 10px;
-    background-image: url(++resource++contentratings/X_icon_10x10.gif);
+    background-image: url("++resource++contentratings/X_icon_10x10.gif");
     background-position: center center;
     background-repeat: no-repeat;
 }
 
 .small-star .DeleteRating.Disabled {
-    background-image: url(++resource++contentratings/X_icon_10x10_gray.gif);
+    background-image: url("++resource++contentratings/X_icon_10x10_gray.gif");
 }
 
 .small-star label {
