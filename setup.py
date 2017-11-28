@@ -50,5 +50,5 @@ setup(name='contentratings',
           'zope.componentvocabulary',
           'zope.container',
       ],
-      extras_require=dict(test=['zope.app.testing', ]),
+      extras_require=dict(test=['zope.testing', 'zope.app.testing',]),
       )
