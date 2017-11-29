@@ -2,7 +2,23 @@ from persistent import Persistent
 from zope.interface import implements, Interface, alsoProvides
 from zope.component import adapts, queryMultiAdapter, getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
-from zope.app.content import queryType
+try:
+    from zope.app.content import queryType
+except ImportError:
+    # No Zope3
+    from zope.interface import providedBy
+    from zope.security.proxy import removeSecurityProxy
+
+    def queryType(object, interface):
+        # Remove the security proxy, so that we can introspect the type of the
+        # object's interfaces.
+        naked = removeSecurityProxy(object)
+        object_iro = providedBy(naked).__iro__
+        for iface in object_iro:
+            if interface.providedBy(iface):
+                return iface
+        return None
+
 from zope.container.contained import contained
 from zope.event import notify
 from zope.tales.engine import Engine
