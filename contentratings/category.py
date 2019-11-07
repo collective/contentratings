@@ -272,6 +272,14 @@ class RatingCategoryAdapter(object):
         notify(ObjectRatedEvent(self.context, self.storage.rating,
                                 self.name))
 
+    def remove_rating(self, username):
+        # Call remove_rating on storage and fire the event
+        # Otherwise, __getattr__ will take over and call storage.remove_rating
+        # without event notification.
+        self.storage.remove_rating(username)
+        notify(ObjectRatedEvent(self.context, None, self.name))
+
+
     # Lame BBB for Five i18n
     @property
     def REQUEST(self):
