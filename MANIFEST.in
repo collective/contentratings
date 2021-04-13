@@ -1,2 +1,25 @@
-graft contentratings
-include *txt
+include README.rst
+include LICENSE
+include CHANGES.rst
+include .coveragerc
+include AUTHORS
+include INSTALL
+include TODO
+include babel.cfg
+include nose2.cfg
+include tox.ini
+include *.txt
+include .pylintrc
+
+# recursive-include docs *.py
+# recursive-include docs *.rst
+# recursive-include docs Makefile
+recursive-include src *.zcml
+recursive-include src *.po
+recursive-include src *.css
+recursive-include src *.gif
+recursive-include src *.pot
+recursive-include src *.pt
+recursive-include src *.sh
+recursive-include src *.txt
+recursive-include src *.rst
