@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from zope.interface import Interface, implements
+from zope.interface import Interface, implementer
 from zope.component import queryUtility, queryMultiAdapter
 from zope.traversing.browser.interfaces import IAbsoluteURL
 from contentratings.browser.interfaces import IAnonymousSession
@@ -18,12 +18,12 @@ except ImportError:
         pass
 
 
+@implementer(IRatingView)
 class BasicEditorialRatingView(object):
     """A basic view for applying and removing user ratings.  Expects
     its context to be an IRatingManager providing IEditorialRating."""
     vocab_name = 'contentratings.browser.base_vocabs.five_star_vocab'
     traversal_name = 'EditorialRating'
-    implements(IRatingView)
 
     # TODO There should be a better way to do this.
     def publishTraverse(self, request, name):

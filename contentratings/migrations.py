@@ -1,14 +1,15 @@
-from zope.component import adapts
-from zope.interface import implements
+from zope.component import adapter
+from zope.interface import implementer
 from BTrees.OOBTree import OOBTree
 from contentratings.storage import UserRatingStorage, EditorialRatingStorage
 from contentratings.interfaces import IRatingStorageMigrator
 
+
+@adapter(OOBTree, UserRatingStorage)
+@implementer(IRatingStorageMigrator)
 class UserRatingMigrator(object):
     """Converts converts an OOBTree based rating store into
     the new UserRating storage"""
-    implements(IRatingStorageMigrator)
-    adapts(OOBTree, UserRatingStorage)
 
     def __init__(self, orig, new):
         self.orig = orig
@@ -35,10 +36,11 @@ class UserRatingMigrator(object):
         # returns our mutated storage object
         return new
 
+
+@adapter(float, EditorialRatingStorage)
 class EditorialRatingMigrator(UserRatingMigrator):
     """Converts converts the simple float based rating store into
     the new EditorialRating storage"""
-    adapts(float, EditorialRatingStorage)
 
     def migrate(self):
         """Converts the older simple float into the new
