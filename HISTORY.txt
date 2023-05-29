@@ -4,7 +4,7 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Updated to support Py3
+- Updated to support Python 3
   [sauzher]
 
 - Fixed XSS vulnerability on rating action
