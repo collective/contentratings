@@ -95,7 +95,7 @@ def expression_runner(name):
                 if isinstance(res, Exception):
                     # raise any excpetions returned by the expression
                     raise res
-            except AttributeError, e:
+            except AttributeError as e:
                 # prevent uninformative errors during property lookup,
                 # by wrapping AttributeErrors
                 raise RuntimeError(e)
