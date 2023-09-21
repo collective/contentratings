@@ -49,8 +49,12 @@ class Rating(Persistent):
         self.userid = userid
         self.timestamp = datetime.utcnow()
 
-    __repr__ = NPRating.__repr__.im_func
-    __str__ = NPRating.__str__.im_func
+    try:  # Python 2
+        __repr__ = NPRating.__repr__.im_func
+        __str__ = NPRating.__str__.im_func
+    except AttributeError:  # Python 3
+        __repr__ = NPRating.__repr__
+        __str__ = NPRating.__str__
 
     def __add__(self, other):
         """Make sure we can add ratings"""
