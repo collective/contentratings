@@ -11,7 +11,8 @@
                  values view/vocabulary;
                  count python:len(values);
                  base_width python:count*star_size;
-                 cat_name python:context.name or '_default'"
+                 cat_name python:context.name or '_default;
+                 authenticator view/authenticator;"
      tal:attributes="class python:'Rating EditorRating' + (star_size &lt;= 15 and ' small-star' or '') + ' kssattr-category-' + cat_name;
                      id string:editor-rating-stars-view-${cat_name};">
   <label tal:content="string:${context/title}:">Editorial rating:</label>
@@ -39,7 +40,7 @@
            tal:define="iter repeat/value/number;
                        z_index python:count - iter + 1;
                        width python:100 - (float(count - iter)/count)*100;"
-           tal:attributes="href string:${view_url}/rate?value=${value/value};
+           tal:attributes="href string:${view_url}/rate?value=${value/value}&${authenticator};
                            title value/title;
                            class string:rate star-${iter};
                            style string:width: ${width}%;; z-index: ${z_index};"

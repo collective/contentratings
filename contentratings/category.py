@@ -1,6 +1,6 @@
 from persistent import Persistent
-from zope.interface import implements, Interface, alsoProvides
-from zope.component import adapts, queryMultiAdapter, getMultiAdapter
+from zope.interface import implementer, Interface, alsoProvides
+from zope.component import adapter, queryMultiAdapter, getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
 try:
     from zope.app.content import queryType
@@ -40,9 +40,9 @@ from contentratings.storage import UserRatingStorage
 BASE_KEY = 'contentratings.userrating'
 
 
+@implementer(IRatingCategory)
 class RatingsCategoryFactory(Persistent):
     """Contains all settings for a rating category"""
-    implements(IRatingCategory)
     storage = UserRatingStorage
     # compiled expressions
 
@@ -95,7 +95,7 @@ def expression_runner(name):
                 if isinstance(res, Exception):
                     # raise any excpetions returned by the expression
                     raise res
-            except AttributeError, e:
+            except AttributeError as e:
                 # prevent uninformative errors during property lookup,
                 # by wrapping AttributeErrors
                 raise RuntimeError(e)
@@ -104,12 +104,12 @@ def expression_runner(name):
     return runner
 
 
+@adapter(IRatingCategory, Interface)
+@implementer(IRatingManager)
 class RatingCategoryAdapter(object):
     """A multiadapter which takes the rating settings, the rating
     storage, and the context and implements basic ratings
     functionality"""
-    implements(IRatingManager)
-    adapts(IRatingCategory, Interface)
 
     def __init__(self, category, context):
         self.category = category

@@ -6,7 +6,6 @@ version = '1.2'
 
 def read(*rnames):
     text = open(os.path.join(os.path.dirname(__file__), *rnames)).read()
-    text = unicode(text, 'utf-8').encode('ascii', 'xmlcharrefreplace')
     return text
 
 

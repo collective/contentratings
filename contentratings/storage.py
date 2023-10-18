@@ -1,6 +1,6 @@
 from datetime import datetime
 from itertools import chain
-from zope.interface import implements
+from zope.interface import implementer
 from zope.container.contained import Contained
 from persistent import Persistent
 from BTrees.OOBTree import OOBTree
@@ -14,10 +14,10 @@ from contentratings.interfaces import (
 
 SINGLEKEY = "contentrating.singlerating"
 
+@implementer(IUserRating, IRatingStorage)
 class UserRatingStorage(Contained, Persistent):
     """BTree-based storage for user ratings, keeps a running
     statistics tally for efficiency."""
-    implements(IUserRating, IRatingStorage)
 
     _average = 0.0
     _anon_average = 0.0
@@ -152,8 +152,8 @@ class UserRatingStorage(Contained, Persistent):
 # This is mainly here for BBB.  The rating category mechanism with the
 # standard UserRatingStorage can cover this usecase using well
 # defined read/write expressions
+@implementer(IEditorialRating, IRatingStorage)
 class EditorialRatingStorage(Contained, Persistent):
-    implements(IEditorialRating, IRatingStorage)
     # BBB
     scale = 5
     annotation_key = SINGLEKEY
