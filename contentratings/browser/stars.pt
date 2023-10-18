@@ -7,7 +7,8 @@
                  count python:len(values);
                  base_width python:count*star_size;
                  cat_name python:context.name or '_default';
-                 small_star python:star_size &lt;= 12 and ' small-star' or '';"
+                 small_star python:star_size &lt;= 12 and ' small-star' or '';
+                authenticator view/authenticator;"
      tal:attributes="class python:'Rating' + small_star + ' kssattr-category-' + cat_name;
                      id string:rating-stars-view-${cat_name};">
 
@@ -47,7 +48,7 @@
      i18n:translate=""
      i18n:attributes="title"
      tal:condition="python:current is not None"
-     tal:attributes="href string:${view_url}/remove_rating">
+     tal:attributes="href string:${view_url}/remove_rating?${authenticator}">
     Remove my rating
   </a>
   <span class="DeleteRating Disabled"
@@ -79,7 +80,7 @@
            tal:define="iter repeat/value/number;
                        z_index python:count - iter + 1;
                        width python:100 - (float(count - iter)/count)*100;"
-           tal:attributes="href string:${view_url}/rate?value=${value/value};
+           tal:attributes="href string:${view_url}/rate?value=${value/value}&${authenticator};
                            title value/title;
                            class string:rate star-${iter};
                            style string:width: ${width}%;; z-index: ${z_index};"

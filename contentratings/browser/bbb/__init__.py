@@ -53,7 +53,7 @@ class EditorialRatingSetView(EditorialRatingView):
 
     def post_rate(self, orig_url=None):
         if orig_url is not None:
-            message = u'%s' % _('You have changed your rating')
+            message = _('You have changed your rating')
             q_spacer= '?' in orig_url and '&' or '?'
             messages = IStatusMessage(self.request, alternate=None)
             if messages is not None:
@@ -94,7 +94,7 @@ class UserRatingSetView(object):
     def _getUser(self):
         # This is zope2 specific, not sure what to do in z3
         user_id = getattr(self, '_user_cache', ())
-        if user_id is not ():
+        if user_id != ():
             return user_id
         if not ZOPE3:
             user = getSecurityManager().getUser()

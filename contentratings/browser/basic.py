@@ -58,6 +58,15 @@ class BasicEditorialRatingView(object):
             url = context.absolute_url()
         return url
 
+    @property
+    def authenticator(self):
+        """Returns the authenticator"""
+        try:
+            from plone.protect.authenticator import createToken
+        except:
+            return ''
+        return '_authenticator={}'.format(createToken())
+
     def rate(self, value, redirect=True):
         """Rate the content.  Enforce vocabulary values.
         """
